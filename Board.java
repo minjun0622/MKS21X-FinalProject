@@ -3,8 +3,9 @@ public class Board extends MineSweeper {
 char[][] data;
 
 //constructor for board.
-public Board() {
-
+public Board(int x, int y) {
+  x = row;
+  y = col;
 }
 
 //makes the board.
