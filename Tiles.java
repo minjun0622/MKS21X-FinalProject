@@ -1,6 +1,6 @@
-public class Tiles extends Board {
+public class Tiles extends Board{
 
-  boolean isBomb, isNumber, isFlag, isClcked;
+  boolean isBomb, isNumber, isFlag, isClicked;
   int row, col;
 
   public Tiles(int rowVal, int colVal) {
@@ -11,6 +11,18 @@ public class Tiles extends Board {
     isFlag = false;
     isClicked = false;
   }
-  public String toString {
-    if ()
+
+  public String toString() {
+    String result = "";
+    if (isFlag)
+      result += "F";
+    if (isBomb && isClicked)
+      result += "B";
+    return result;
   }
+
+
+
+
+
+}
