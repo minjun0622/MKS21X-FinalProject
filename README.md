@@ -4,3 +4,6 @@ The first half of the period was spent on branching tutorials. We were successfu
 
 1/7/19
 Minjun worked on the board class, where the board was made and plans to randomize the keys that will be printed out on the terminal. Chong worked on the Tiles class and set it up, establishing methods and boolean.
+
+1/8/19
+Chong reached further progress with the Tiles class. However, we came up with a class issue in Tiles. We debated whether a method was needed (toString), to change the values of the x in the 2D array. Minjun needed clarification on how we are going to know where the boolean (isBomb) is going to be used. We figured out that every x is going to have a boolean that predetermines whether it is a bomb or not.
