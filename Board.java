@@ -1,4 +1,4 @@
-public abstract class Board {
+public /*abstract*/ class Board {
 
 char[][] data;
 
@@ -34,6 +34,8 @@ public Board(int x, int y) {
     if (isClicked )
     //return error message. Not sure where these methods belong.
   }
+
+  public
 
 
 
