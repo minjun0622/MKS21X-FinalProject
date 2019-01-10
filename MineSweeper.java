@@ -1,3 +1,4 @@
+
 public class MineSweeper {
   int seed;
 
