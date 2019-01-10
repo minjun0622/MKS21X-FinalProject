@@ -1,11 +1,11 @@
 public class Tiles { //extends Board ??
 
   private boolean isBomb, isNumber, isFlag, isClicked;
-  private int row, col, numNeighborMines;
+  private int x, y, numNeighborMines;
 
-  public Tiles(int rowVal, int colVal) {
-    row = rowVal;
-    col = colVal;
+  public Tiles(int xVal, int uVal) {
+    x = xowVal;
+    y = yolVal;
     isBomb = false;
     isNumber = false;
     isFlag = false;
@@ -49,12 +49,12 @@ public class Tiles { //extends Board ??
     return isClicked;
   }
 
-  public int row() {
-    return row;
+  public int getX() {
+    return x;
   }
 
-  public int col() {
-    return col;
+  public int getY() {
+    return y;
   }
 
 
