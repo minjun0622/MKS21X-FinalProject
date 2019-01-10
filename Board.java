@@ -1,6 +1,7 @@
 public /*abstract*/ class Board {
 
-char[][] data;
+Tiles[][] data;
+private int row, col;
 
 //constructor for board.
 public Board(int x, int y) {
@@ -10,7 +11,7 @@ public Board(int x, int y) {
 
 //makes the board.
   public String toString(int x, int y) {
-    String result = '';
+    String result = "";
     for (int x = 0; x < data.length; x++) {
       for (int y = 0; y < data[x].length; y++) {
         s += " " + data[i][x];
@@ -21,7 +22,7 @@ public Board(int x, int y) {
 
 //a helper method in which we can use to create different keys on the board.
   public int randomize(int x) {
-    Math.random()
+    Math.random();
   }
 
   public String win() {
