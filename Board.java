@@ -45,7 +45,11 @@ public void fillBoard() {
 }
 
 public void calculateNearbyMines() {
-  
+  for (int r = 0; r < row; r++) {
+    for (int c = 0; c < col; c++) {
+      checkNeighbors(r, c);
+    }
+  }
 }
 
 
