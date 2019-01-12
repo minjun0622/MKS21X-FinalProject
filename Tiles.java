@@ -1,15 +1,17 @@
-public class Tiles { //extends Board ??
+public class Tiles /*extends Board?? */ {
 
-  private boolean isBomb, isNumber, isFlag, isClicked;
-  private int x, y, numNeighborMines;
+  private boolean isMine, isFlagged, isRevealed;
+  private int x, y, numNearbyMines;
+  private String symbol;
 
-  public Tiles(int xVal, int uVal) {
-    x = xowVal;
-    y = yolVal;
-    isBomb = false;
-    isNumber = false;
-    isFlag = false;
-    isClicked = false;
+  public Tiles(int xVal, int yVal, boolean isMined) {
+    x = xVal;
+    y = yVal;
+    isMine = isMined;
+    isFlagged = false;
+    isRevealed = false;
+    numNearbyMines = 0;
+    symbol = " ";
   }
   /*
 
@@ -25,28 +27,24 @@ public class Tiles { //extends Board ??
 
   }*/
 
-  public int getNumNeighborMines() {
-    return numNeighborMines;
+  public int getNumNearbyMines() {
+    return numNearbyMines;
   }
 
-  public void setNumNeighborMines(int value) {
-    numNeighborMines = value;
+  public void setNumNearbyMines(int value) {
+    numNearbyMines = value;
   }
 
-  public boolean isBomb() {
-    return isBomb;
+  public boolean isMine() {
+    return isMine;
   }
 
-  public boolean isNumber() {
-    return isNumber;
+  public boolean isFlagged() {
+    return isFlagged;
   }
 
-  public boolean isFlag() {
-    return isFlag;
-  }
-
-  public boolean isClicked() {
-    return isClicked;
+  public boolean isRevealed() {
+    return isRevealed;
   }
 
   public int getX() {
@@ -55,6 +53,23 @@ public class Tiles { //extends Board ??
 
   public int getY() {
     return y;
+  }
+
+  public String getStymbol() {
+    return symbol;
+  }
+
+  public void reveal() {
+    isRevealed = true;
+  }
+
+  public void setFlag(boolean flagged) {
+    isFlagged = flagged;
+    if (!isRevealed) {
+      if (isFlagged)
+        symbol = "F";
+
+    }
   }
 
 
