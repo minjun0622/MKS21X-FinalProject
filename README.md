@@ -8,3 +8,5 @@
 1/8/19 Chong reached further progress with the Tiles class. However, we came up with a class issue in Tiles. We debated whether a method was needed (toString), to change the values of the x in the 2D array. Minjun needed clarification on how we are going to know where the boolean (isBomb) is going to be used. We figured out that every x is going to have a boolean that predetermines whether it is a bomb or not.
 
 1/9/19 Made further progress on the Tiles function. The board class was improved with extra tweaks. Mainly worked on the Tiles class because we realized that was the class with the most methods. Ran into a problem with class structure. Not sure if it extends or not.
+
+1/10/19 Chong finished the Tiles class and merged it into the master branch. However, due to branching problems we weren't able to commit due to conflicts, so we pushed our conflicts and committed late. Also we forgot to update the dev log, which is updated now. (1/12/19).
