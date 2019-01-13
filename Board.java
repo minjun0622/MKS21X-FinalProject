@@ -3,40 +3,48 @@ import java.io.*;
 
 public class Board {
 
-//private Tiles[][] board;
-private int row, col, numMines;
-private boolean beenHere;
-private boolean selected;
-private String result;
+private Tiles[][] board;
+//creating the board.
+private int row, numMines;
+private int isClicked;
+//length, width and the number of mines.
+private int checked;
+//basically tells you how many have been opened.
+private boolean destroyed;
 
 //constructor for board.
 //Creates the board.
-public Board(boolean selected) {
-  beenHere = false;
-  this.selected = selected;
-result = null;
+public Board(int row, int counter) {
+  row = 5;
+  /*
+  if (x > 9) {
+  x = 9;
 }
-
-public void setResult(String conclusion) {
-  result = conclusion;
+  if (y < 0) {
+  y = 5;
 }
-
-public String getResult() {
-  if (result == null) {
-    if (beenHere) {
-      return "X";
+*/
+this.row = row;
+Tiles = new Tiles[row][row];
+Random random = new Random();
+for (int i = 0; i < x; i++) {
+  for (int j = 0; j < x; j++) {
+    if (random.nextInt(counter) + 1 == isClicked) {
+      Tiles[i][j] = new Tiles(true);
+      isClicked++;
     }
     else {
-      return "O";
+      Tiles[i][j] = new Tiles(false);
     }
   }
-  else {
-    return "_";
-  }
-  else {
-    return result;
-  }  
-  }
+}
+}
+
+//basically counts all the spaces available, then make it so that there is a grid.
+//We can subtract the number of mines and the tiles we have clicked to see if we are done.
+
+public boolean isChecked() {
+  return row * row - checked - isClicked == 0;
 }
 
 //selects a random position of the board and makes import junit.framework.TestCase;
