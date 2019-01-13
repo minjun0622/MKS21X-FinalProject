@@ -30,12 +30,17 @@ public Board(int rowVal, int colVal) {
 */
 
 
+
+//this method contains 3 helpher methods that will
+//actually create the board
 private void createBoard() {
   placeMines();
   fillBoard();
   calculateNearbyMines();
 }
 
+//selects a random position of the board and makes import junit.framework.TestCase;
+//a bomb tile. While loop makes sure that the numMines of mines are placed.
 public void placeMines() {
   Random rand = new Random();
   int randX = rand.nextInt(row);
@@ -49,6 +54,8 @@ public void placeMines() {
   }
 }
 
+//fills board by making the null positions of the
+//board into regular tiles.
 public void fillBoard() {
   for (int r = 0; r < row; r++) {
     for (int c = 0; c < col; c++) {
@@ -59,14 +66,22 @@ public void fillBoard() {
   }
 }
 
+//loops through every tile on the board and if it is
+//not a bomb tile, then it checks its 8 neighbor tiles.
 public void calculateNearbyMines() {
   for (int r = 0; r < row; r++) {
     for (int c = 0; c < col; c++) {
-      checkNeighbors(r, c);
+      if (!board[r][c].isMine())
+        checkNeighbors(r, c);
     }
   }
 }
 
+//helper method for the calculateNearbyMines method.
+//checks 8 neighboring tiles and the mineCount
+//keeps track of how many mines are present in the 8
+//neighboring tiles. It then sets the numNearbyMines
+//of the tile[r][c] by the mineCount.
 public void checkNeighbors(int r, int c) {
   int mineCount = 0;
   if (r-1 >= 0 && c-1 >= 0 && board[r-1][c-1].isMine())
@@ -88,9 +103,11 @@ public void checkNeighbors(int r, int c) {
   board[r][c].setNumNearbyMines(mineCount);
 }
 
+//an accessor method that returns the board.
 public Tiles[][] getBoard() {
   return board;
 }
+
 
 
 
@@ -114,6 +131,8 @@ public static void main(String[] args) {
 }
 
 */
+
+
 
 
 
