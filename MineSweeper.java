@@ -10,9 +10,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-/*import board.java;
-import Tiles.java;
-*/
+
 
 public class MineSweeper {
 
@@ -44,6 +42,7 @@ public static void main(String[] args) {
       int x = 15;
       int y = 15;
 */
+  toString (x, y);
 
     Terminal terminal = TerminalFacade.createTerminal();
     terminal.enterPrivateMode();
@@ -101,5 +100,11 @@ public static void main(String[] args) {
         putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
       }
     }
+    if (numMines = 0) {
+      running = false;
+      terminal.exitPrivateMode();
+      System.out.println("Game won! Time took for finishing: " +lastSecond);
+    }
+
   }
 }
