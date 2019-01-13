@@ -116,7 +116,7 @@ public String toString() {
 }
 
 public void reveal(int r, int c) {
-  Tiles[] nonMineNeighborTiles = checkNonMineTiles(r, c);
+  ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
   board[r][c].reveal();
   if (board[r][c].isMine()) {
     win() = false;
@@ -127,16 +127,33 @@ public void reveal(int r, int c) {
     board[r][c].setSymbol();
   }
   if (board[r][c].getNumNearbyMines() == 0) {
-    for (int i = 0; i < nonMineNeighborTiles.length(); i++) {
-      if (!nonMineNeighborTiles[i].isRevealed();) {
-        reveal(nonMineNeighborTiles[i].getX(), nonMineNeighborTiles[i].getY());
+    for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
+      if (!nonMineNeighborTiles.get(i).isRevealed();) {
+        reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
       }
     }
   }
 }
 
-public Tiles[] checkNonMineTiles(int r, int c) {
-  Tiles[] result = new Tiles[]
+public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
+  ArrayList<Tiles> result = new ArrayList<Tiles>();
+  if (r-1 >= 0 && c-1 >= 0 && !board[r-1][c-1].isMine())
+    result.add(board[r-1][c-1]);
+  if (r-1 >= 0 && !board[r-1][c].isMine())
+    result.add(board[r-1][c]);
+  if (r-1 >= 0 && c+1 < row && !board[r-1][c+1].isMine())
+    result.add(board[r-1][c+1]);
+  if (c-1 >= 0 && !board[r][c-1].isMine())
+    result.add(board[r][c-1]);
+  if (c+1 < col && !board[r][c+1].isMine())
+    result.add(board[r][c+1]);
+  if (r+1 < row && c-1 >= 0 && !board[r+1][c-1].isMine())
+    result.add(board[r+1][c-1]);
+  if (r+1 < row && !board[r+1][c].isMine())
+    result.add(board[r+1][c]);
+  if (r+1 < row && c+1 < col && !board[r+1][c+1].isMine())
+    result.add(board[r+1][c+1]);
+  return result;
 }
 
 
