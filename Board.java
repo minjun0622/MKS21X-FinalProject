@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public /*abstract*/ class Board {
+public class Board {
 
 private Tiles[][] board;
 private int row, col, numMines;
@@ -114,7 +114,7 @@ public static void main(String[] args) {
 
 
 
-
+/*
 //makes the board.
   public String toString(int x, int y) {
     String result = "";
@@ -140,4 +140,6 @@ public static void main(String[] args) {
   }
 
 
+}
+*/
 }
