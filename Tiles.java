@@ -16,9 +16,7 @@ public class Tiles /*extends Board?? */ {
     symbol = " ";
   }
   /*
-
   needs to be worked on/is toString for Tiles needed?
-
   public String toString() {
     String result = "";
     if (isFlag)
@@ -26,7 +24,6 @@ public class Tiles /*extends Board?? */ {
     if (isBomb && isClicked)
       result += "B";
     return result;
-
   }*/
 
   //returns numNearbyMines

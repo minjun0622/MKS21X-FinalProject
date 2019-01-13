@@ -10,8 +10,9 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-import board.java;
+/*import board.java;
 import Tiles.java;
+*/
 
 public class MineSweeper {
 
@@ -23,6 +24,8 @@ public static void putString(int r, int c,Terminal t, String s){
 }
 
 public static void main(String[] args) {
+  int x = 5;
+  int y = 5;
   /*
   //so we can pick the difficulty
   if (args.length == 0) {
@@ -45,15 +48,12 @@ public static void main(String[] args) {
     Terminal terminal = TerminalFacade.createTerminal();
     terminal.enterPrivateMode();
 
-    //boolean running = true;
-
-		long tStart = System.currentTimeMillis();
-		long lastSecond = 0;terminal.setCursorVisible(false);
+    boolean running = true;
 
     long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
-    while(true){
+    while(running){
 
 			terminal.moveCursor(x,y);
 
@@ -85,17 +85,12 @@ public static void main(String[] args) {
     		terminal.putCharacter(' ');
     		y++;
   			}
-      if (key.getKind() == Key.Kind.Space) {
-        if (isMine()) {
-
-        }
-      }
+      if (key.getKind() == Key.Kind.NormalKey) {
+        if (isMine())
       terminal.putCharacter('x');
       }
     }
   }
-
-    public String displayTime() {
       while (running) {
       long tEnd = System.currentTimeMillis();
       long millis = tEnd - tStart;
@@ -107,5 +102,4 @@ public static void main(String[] args) {
       }
     }
   }
-
 }
