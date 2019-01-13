@@ -101,7 +101,7 @@ public Tiles[][] getBoard() {
 }
 
 public boolean win() {
-  return win();
+  return win;
 }
 
 public String toString() {
@@ -115,10 +115,30 @@ public String toString() {
   return result;
 }
 
-public boolean reveal(int r, int c) {
+public void reveal(int r, int c) {
+  Tiles[] nonMineNeighborTiles = checkNonMineTiles(r, c);
   board[r][c].reveal();
-  if
+  if (board[r][c].isMine()) {
+    win() = false;
+    board[r][c].setSymbol();
+  }
+  else {
+    board[r][c].checkNeighbors();
+    board[r][c].setSymbol();
+  }
+  if (board[r][c].getNumNearbyMines() == 0) {
+    for (int i = 0; i < nonMineNeighborTiles.length(); i++) {
+      if (!nonMineNeighborTiles[i].isRevealed();) {
+        reveal(nonMineNeighborTiles[i].getX(), nonMineNeighborTiles[i].getY());
+      }
+    }
+  }
 }
+
+public Tiles[] checkNonMineTiles(int r, int c) {
+  Tiles[] result = new Tiles[]
+}
+
 
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
