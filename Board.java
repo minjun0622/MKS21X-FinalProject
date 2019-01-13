@@ -5,6 +5,7 @@ public class Board {
 
 private Tiles[][] board;
 private int row, col, numMines;
+private boolean win;
 
 //constructor for board.
 public Board(int rowVal, int colVal, int numOfMines) {
@@ -99,6 +100,10 @@ public Tiles[][] getBoard() {
   return board;
 }
 
+public boolean win() {
+  return win();
+}
+
 public String toString() {
   String result = "";
   for (int r = 0; r < row; r++) {
@@ -108,6 +113,11 @@ public String toString() {
     result += "\n";
   }
   return result;
+}
+
+public boolean reveal(int r, int c) {
+  board[r][c].reveal();
+  if
 }
 
 //this is a main method made to check if
