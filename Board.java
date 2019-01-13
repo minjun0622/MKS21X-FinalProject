@@ -138,6 +138,13 @@ public static void main(String[] args) {
     if (isClicked )
     //return error message. Not sure where these methods belong.
   }
+<<<<<<< HEAD
+}
+*/
+=======
+
+
+>>>>>>> 1067ff6263d84a592dd64b8214de4922b0da5719
 }
 */
 }

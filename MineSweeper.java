@@ -32,6 +32,7 @@ public static void main(String[] args) {
     if (args[1].equals("easy"))
       int x = 5;
       int y = 5;
+
     if (args[1].equals("medium"))
       int x = 10;
       int y = 10;
@@ -39,7 +40,6 @@ public static void main(String[] args) {
       int x = 15;
       int y = 15;
 */
-
     Terminal terminal = TerminalFacade.createTerminal();
     terminal.enterPrivateMode();
 
@@ -54,6 +54,7 @@ public static void main(String[] args) {
     while(true){
 
 			terminal.moveCursor(x,y);
+
 
       Key key = terminal.readInput();
 
