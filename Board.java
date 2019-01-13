@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public /*abstract*/ class Board {
+public class Board {
 
 private Tiles[][] board;
 private int row, col, numMines;
@@ -14,21 +14,6 @@ public Board(int rowVal, int colVal, int numOfMines) {
   board = new Tiles[rowVal][colVal];
   createBoard();
 }
-
-/*
-
-//This Constructor is created only for
-//the purpose of the main method to test
-//the checkNeighbors method.
-
-public Board(int rowVal, int colVal) {
-  board = new Tiles[rowVal][colVal];
-  row = rowVal;
-  col = colVal;
-}
-
-*/
-
 
 
 //this method contains 3 helpher methods that will
@@ -108,11 +93,6 @@ public Tiles[][] getBoard() {
   return board;
 }
 
-
-
-
-/*
-
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
@@ -130,17 +110,11 @@ public static void main(String[] args) {
   //it returns 3.
 }
 
-*/
-
-
-
 
 
 
 
 /*
----------------old code---------------
-
 //makes the board.
   public String toString(int x, int y) {
     String result = "";
@@ -151,26 +125,19 @@ public static void main(String[] args) {
         s += "|" + '\n' + "|";
       }
     }
-
 //a helper method in which we can use to create different keys on the board.
   public int randomize(int x) {
     Math.random();
   }
-
   public String win() {
     if (numMines = 0) {
       //return winning message.
     }
   }
-
   public String lose() {
     if (isClicked )
     //return error message. Not sure where these methods belong.
   }
-
-  public
-
-  */
-
-
+}
+*/
 }
