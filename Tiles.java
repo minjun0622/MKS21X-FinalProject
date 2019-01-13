@@ -12,7 +12,9 @@ public class Tiles { //extends Board ??
     isClicked = false;
   }
   /*
+
   needs to be worked on/is toString for Tiles needed?
+
   public String toString() {
     String result = "";
     if (isFlag)
@@ -20,6 +22,7 @@ public class Tiles { //extends Board ??
     if (isBomb && isClicked)
       result += "B";
     return result;
+
   }*/
 
   public int getNumNeighborMines() {
