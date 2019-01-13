@@ -15,6 +15,12 @@ public Board(int rowVal, int colVal, int numOfMines) {
   createBoard();
 }
 
+public Board(int rowVal, int colVal) {
+  row = rowVal;
+  col = colVal;
+  board = new Tiles[rowVal][colVal];
+}
+
 
 //this method contains 3 helpher methods that will
 //actually create the board
@@ -93,22 +99,36 @@ public Tiles[][] getBoard() {
   return board;
 }
 
+public String toString() {
+  String result = "";
+  for (int r = 0; r < row; r++) {
+    for (int c = 0; c < col; c++) {
+      result += board[r][c].getSymbol() + " ";
+    }
+    result += "\n";
+  }
+  return result;
+}
+
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
 
 public static void main(String[] args) {
-  Board test = new Board(2, 2);
+  Board test = new Board(6, 6);
   Tiles[][] boardd = test.getBoard();
-  boardd[0][0] = new Tiles(0, 0, false);
-  boardd[0][1] = new Tiles(0, 1, true);
-  boardd[1][0] = new Tiles(1, 0, true);
-  boardd[1][1] = new Tiles(1, 1, true);
-  test.checkNeighbors(0, 0);
-  System.out.println(boardd[0][0].getNumNearbyMines());
+  test.fillBoard();
+  boardd[0][0] = new Tiles(0, 0, true);
+  //boardd[0][1] = new Tiles(0, 1, true);
+  //boardd[1][0] = new Tiles(1, 0, true);
+  //boardd[1][1] = new Tiles(1, 1, true);
+  //test.checkNeighbors(0, 0);
+  //System.out.println(boardd[0][0].getNumNearbyMines());
+  System.out.println(test);
   //should return 3.
   //it returns 3.
 }
+
 
 
 
