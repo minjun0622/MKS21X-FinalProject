@@ -15,6 +15,21 @@ public Board(int rowVal, int colVal, int numOfMines) {
   createBoard();
 }
 
+/*
+
+//This Constructor is created only for
+//the purpose of the main method to test
+//the checkNeighbors method.
+
+public Board(int rowVal, int colVal) {
+  board = new Tiles[rowVal][colVal];
+  row = rowVal;
+  col = colVal;
+}
+
+*/
+
+
 private void createBoard() {
   placeMines();
   fillBoard();
@@ -52,10 +67,61 @@ public void calculateNearbyMines() {
   }
 }
 
+public void checkNeighbors(int r, int c) {
+  int mineCount = 0;
+  if (r-1 >= 0 && c-1 >= 0 && board[r-1][c-1].isMine())
+    mineCount++;
+  if (r-1 >= 0 && board[r-1][c].isMine())
+    mineCount++;
+  if (r-1 >= 0 && c+1 < row && board[r-1][c+1].isMine())
+    mineCount++;
+  if (c-1 >= 0 && board[r][c-1].isMine())
+    mineCount++;
+  if (c+1 < col && board[r][c+1].isMine())
+    mineCount++;
+  if (r+1 < row && c-1 >= 0 && board[r+1][c-1].isMine())
+    mineCount++;
+  if (r+1 < row && board[r+1][c].isMine())
+    mineCount++;
+  if (r+1 < row && c+1 < col && board[r+1][c+1].isMine())
+    mineCount++;
+  board[r][c].setNumNearbyMines(mineCount);
+}
+
+public Tiles[][] getBoard() {
+  return board;
+}
 
 
 
 /*
+
+//this is a main method made to check if
+//the checkNeighbors() method work or not.
+//It works properly.
+
+public static void main(String[] args) {
+  Board test = new Board(2, 2);
+  Tiles[][] boardd = test.getBoard();
+  boardd[0][0] = new Tiles(0, 0, false);
+  boardd[0][1] = new Tiles(0, 1, true);
+  boardd[1][0] = new Tiles(1, 0, true);
+  boardd[1][1] = new Tiles(1, 1, true);
+  test.checkNeighbors(0, 0);
+  System.out.println(boardd[0][0].getNumNearbyMines());
+  //should return 3.
+  //it returns 3.
+}
+
+*/
+
+
+
+
+
+/*
+---------------old code---------------
+
 //makes the board.
   public String toString(int x, int y) {
     String result = "";
@@ -86,9 +152,6 @@ public void calculateNearbyMines() {
   public
 
   */
-
-
-
 
 
 }
