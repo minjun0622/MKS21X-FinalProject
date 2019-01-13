@@ -3,25 +3,40 @@ import java.io.*;
 
 public class Board {
 
-private Tiles[][] board;
+//private Tiles[][] board;
 private int row, col, numMines;
+private boolean beenHere;
+private boolean selected;
+private String result;
 
 //constructor for board.
-public Board(int rowVal, int colVal, int numOfMines) {
-  row = rowVal;
-  col = colVal;
-  numMines = numOfMines;
-  board = new Tiles[rowVal][colVal];
-  createBoard();
+//Creates the board.
+public Board(boolean selected) {
+  beenHere = false;
+  this.selected = selected;
+result = null;
 }
 
+public void setResult(String conclusion) {
+  result = conclusion;
+}
 
-//this method contains 3 helpher methods that will
-//actually create the board
-private void createBoard() {
-  placeMines();
-  fillBoard();
-  calculateNearbyMines();
+public String getResult() {
+  if (result == null) {
+    if (beenHere) {
+      return "X";
+    }
+    else {
+      return "O";
+    }
+  }
+  else {
+    return "_";
+  }
+  else {
+    return result;
+  }  
+  }
 }
 
 //selects a random position of the board and makes import junit.framework.TestCase;
@@ -109,6 +124,7 @@ public static void main(String[] args) {
   //should return 3.
   //it returns 3.
 }
+
 
 
 
