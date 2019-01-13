@@ -1,15 +1,19 @@
-public class Tiles { //extends Board ??
+public class Tiles /*extends Board?? */ {
 
-  private boolean isBomb, isNumber, isFlag, isClicked;
-  private int row, col, numNeighborMines;
+  private boolean isMine, isFlagged, isRevealed;
+  private int x, y, numNearbyMines;
+  private String symbol;
 
-  public Tiles(int rowVal, int colVal) {
-    row = rowVal;
-    col = colVal;
-    isBomb = false;
-    isNumber = false;
-    isFlag = false;
-    isClicked = false;
+  //constructor for Tiles
+  public Tiles(int xVal, int yVal, boolean isMined) {
+    x = xVal;
+    y = yVal;
+    isMine = isMined;
+    isFlagged = false;
+    isRevealed = false;
+    numNearbyMines = 0;
+    //the symbol that is going to display what kind of tile it is
+    symbol = " ";
   }
   /*
 
@@ -25,36 +29,61 @@ public class Tiles { //extends Board ??
 
   }*/
 
-  public int getNumNeighborMines() {
-    return numNeighborMines;
+  //returns numNearbyMines
+  public int getNumNearbyMines() {
+    return numNearbyMines;
   }
 
-  public void setNumNeighborMines(int value) {
-    numNeighborMines = value;
+  //sets the numNearbyMines by a given value
+  public void setNumNearbyMines(int value) {
+    numNearbyMines = value;
   }
 
-  public boolean isBomb() {
-    return isBomb;
+  //returns isMine
+  public boolean isMine() {
+    return isMine;
   }
 
-  public boolean isNumber() {
-    return isNumber;
+  //returns isFlagged
+  public boolean isFlagged() {
+    return isFlagged;
   }
 
-  public boolean isFlag() {
-    return isFlag;
+  //returns isRevealed
+  public boolean isRevealed() {
+    return isRevealed;
   }
 
-  public boolean isClicked() {
-    return isClicked;
+  //returns the x position of the Tile
+  public int getX() {
+    return x;
   }
 
-  public int row() {
-    return row;
+  //returns the y position of the Tile
+  public int getY() {
+    return y;
   }
 
-  public int col() {
-    return col;
+  //returns the symbol of the Tile
+  public String getStymbol() {
+    return symbol;
+  }
+
+  //when a tile is revealed, set its isRevealed to true
+  public void reveal() {
+    isRevealed = true;
+  }
+
+  //different actions depending on whether the tile is
+  //already flagged, not flagged, revealed, etc.
+  //needs more work probably.
+  public void setFlag(boolean flagged) {
+    isFlagged = flagged;
+    if (!isRevealed) {
+      if (isFlagged)
+        symbol = "F";
+
+    }
   }
 
 

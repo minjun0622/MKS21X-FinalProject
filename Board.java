@@ -15,18 +15,6 @@ public Board(int rowVal, int colVal, int numOfMines) {
   createBoard();
 }
 
-/*
-//This Constructor is created only for
-//the purpose of the main method to test
-//the checkNeighbors method.
-public Board(int rowVal, int colVal) {
-  board = new Tiles[rowVal][colVal];
-  row = rowVal;
-  col = colVal;
-}
-*/
-
-
 
 //this method contains 3 helpher methods that will
 //actually create the board
@@ -105,13 +93,10 @@ public Tiles[][] getBoard() {
   return board;
 }
 
-
-
-
-/*
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
+
 public static void main(String[] args) {
   Board test = new Board(2, 2);
   Tiles[][] boardd = test.getBoard();
@@ -124,16 +109,12 @@ public static void main(String[] args) {
   //should return 3.
   //it returns 3.
 }
-*/
 
 
 
 
 
 
-
-/*
----------------old code---------------
 //makes the board.
   public String toString(int x, int y) {
     String result = "";
@@ -157,8 +138,6 @@ public static void main(String[] args) {
     if (isClicked )
     //return error message. Not sure where these methods belong.
   }
-  public
-  */
 
 
 }

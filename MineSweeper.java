@@ -15,10 +15,26 @@ public class MineSweeper {
 }
 
 }
-
+public static void putString(int r, int c,Terminal t, String s){
+  t.moveCursor(r,c);
+  for(int i = 0; i < s.length();i++){
+    t.putCharacter(s.charAt(x));
+  }
+}
 public static void main(String[] args) {
+  }
+  //so we can pick the difficulty
   if (args.length == 0) {
-    System.out.println( )
+    System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
+  }
+  if (args.length == 1) {
+    //start game with intended difficulty.
+    if (args[2].equals("easy")) {
+      int x = 5;
+      int y = 5;
+
+    }
+
   }
 
 }
