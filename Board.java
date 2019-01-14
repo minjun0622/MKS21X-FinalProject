@@ -5,6 +5,7 @@ public class Board {
 
 private Tiles[][] board;
 private int row, col, numMines;
+private boolean win;
 
 //constructor for board.
 public Board(int rowVal, int colVal, int numOfMines) {
@@ -13,6 +14,12 @@ public Board(int rowVal, int colVal, int numOfMines) {
   numMines = numOfMines;
   board = new Tiles[rowVal][colVal];
   createBoard();
+}
+
+public Board(int rowVal, int colVal) {
+  row = rowVal;
+  col = colVal;
+  board = new Tiles[rowVal][colVal];
 }
 
 
@@ -93,22 +100,82 @@ public Tiles[][] getBoard() {
   return board;
 }
 
+public boolean win() {
+  return win;
+}
+
+public String toString() {
+  String result = "";
+  for (int r = 0; r < row; r++) {
+    for (int c = 0; c < col; c++) {
+      result += board[r][c].getSymbol() + " ";
+    }
+    result += "\n";
+  }
+  return result;
+}
+
+public void reveal(int r, int c) {
+  ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
+  board[r][c].reveal();
+  if (board[r][c].isMine()) {
+    win = false;
+    board[r][c].setSymbol();
+  }
+  else {
+    checkNeighbors(r, c);
+    board[r][c].setSymbol();
+  }
+  if (board[r][c].getNumNearbyMines() == 0) {
+    for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
+      if (!nonMineNeighborTiles.get(i).isRevealed()) {
+        reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+      }
+    }
+  }
+}
+
+public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
+  ArrayList<Tiles> result = new ArrayList<Tiles>();
+  if (r-1 >= 0 && c-1 >= 0 && !board[r-1][c-1].isMine())
+    result.add(board[r-1][c-1]);
+  if (r-1 >= 0 && !board[r-1][c].isMine())
+    result.add(board[r-1][c]);
+  if (r-1 >= 0 && c+1 < row && !board[r-1][c+1].isMine())
+    result.add(board[r-1][c+1]);
+  if (c-1 >= 0 && !board[r][c-1].isMine())
+    result.add(board[r][c-1]);
+  if (c+1 < col && !board[r][c+1].isMine())
+    result.add(board[r][c+1]);
+  if (r+1 < row && c-1 >= 0 && !board[r+1][c-1].isMine())
+    result.add(board[r+1][c-1]);
+  if (r+1 < row && !board[r+1][c].isMine())
+    result.add(board[r+1][c]);
+  if (r+1 < row && c+1 < col && !board[r+1][c+1].isMine())
+    result.add(board[r+1][c+1]);
+  return result;
+}
+
+
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
 
 public static void main(String[] args) {
-  Board test = new Board(2, 2);
+  Board test = new Board(6, 6);
   Tiles[][] boardd = test.getBoard();
-  boardd[0][0] = new Tiles(0, 0, false);
-  boardd[0][1] = new Tiles(0, 1, true);
-  boardd[1][0] = new Tiles(1, 0, true);
-  boardd[1][1] = new Tiles(1, 1, true);
-  test.checkNeighbors(0, 0);
-  System.out.println(boardd[0][0].getNumNearbyMines());
+  test.fillBoard();
+  boardd[0][0] = new Tiles(0, 0, true);
+  //boardd[0][1] = new Tiles(0, 1, true);
+  //boardd[1][0] = new Tiles(1, 0, true);
+  //boardd[1][1] = new Tiles(1, 1, true);
+  //test.checkNeighbors(0, 0);
+  //System.out.println(boardd[0][0].getNumNearbyMines());
+  System.out.println(test);
   //should return 3.
   //it returns 3.
 }
+
 
 
 
@@ -138,13 +205,7 @@ public static void main(String[] args) {
     if (isClicked )
     //return error message. Not sure where these methods belong.
   }
-<<<<<<< HEAD
 }
 */
-=======
 
-
->>>>>>> 1067ff6263d84a592dd64b8214de4922b0da5719
-}
-*/
 }

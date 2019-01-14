@@ -13,12 +13,10 @@ public class Tiles /*extends Board?? */ {
     isRevealed = false;
     numNearbyMines = 0;
     //the symbol that is going to display what kind of tile it is
-    symbol = " ";
+    symbol = "_";
   }
   /*
-
   needs to be worked on/is toString for Tiles needed?
-
   public String toString() {
     String result = "";
     if (isFlag)
@@ -26,7 +24,6 @@ public class Tiles /*extends Board?? */ {
     if (isBomb && isClicked)
       result += "B";
     return result;
-
   }*/
 
   //returns numNearbyMines
@@ -54,6 +51,10 @@ public class Tiles /*extends Board?? */ {
     return isRevealed;
   }
 
+  public void reveal() {
+    isRevealed = true;
+  }
+
   //returns the x position of the Tile
   public int getX() {
     return x;
@@ -65,15 +66,24 @@ public class Tiles /*extends Board?? */ {
   }
 
   //returns the symbol of the Tile
-  public String getStymbol() {
+  public String getSymbol() {
     return symbol;
   }
 
-  //when a tile is revealed, set its isRevealed to true
-  public void reveal() {
-    isRevealed = true;
+  public void setSymbol() {
+    if (isRevealed) {
+      if (isMine) {
+        symbol = "X";
+      }
+      else {
+        symbol = "" + numNearbyMines;
+      }
+    }
+    else symbol = "_";
   }
 
+
+  /*
   //different actions depending on whether the tile is
   //already flagged, not flagged, revealed, etc.
   //needs more work probably.
@@ -85,6 +95,7 @@ public class Tiles /*extends Board?? */ {
 
     }
   }
+  */
 
 
 
