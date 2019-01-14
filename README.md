@@ -15,3 +15,8 @@
 
 1/13/19
 The lanterna code sample was studied and Minjun figured out how the code works and the logistics of it. He is implementing the necessities that are involved with the main method. Still has a question on the class structure and how we are going to implement methods from the Board class. Will discuss with Chong later in the day. Also, due to time constraints, the flag feature will be removed for the demo. Possibly will add later on if more time is allotted. Minjun realized the Tiles class will be edited due to the fact that it shares some of the methods with Board. Board is more suited to take those methods, therefore it will be commented out. Chong edited the Board class to finalize. Chong is working on the main. Decided to not use the Lanterna and use a coordinates system because of the difficulty that the lanterna had.
+
+Directions for the Code:
+You can play the game by selecting two coordinates,
+the first number is the x direction of the board and the second digit is the y direction.
+The board goes up to 0 - 6 in both x and y direcitons.
