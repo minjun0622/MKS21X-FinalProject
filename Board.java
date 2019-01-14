@@ -4,47 +4,32 @@ import java.io.*;
 public class Board {
 
 private Tiles[][] board;
-//creating the board.
-private int row, numMines;
-private int isClicked;
-//length, width and the number of mines.
-private int checked;
-//basically tells you how many have been opened.
-private boolean destroyed;
+private int row, col, numMines;
+private boolean win;
+private int fieldsAllreadyExplored;
 
 //constructor for board.
-//Creates the board.
-public Board(int row, int counter) {
-  row = 5;
-  /*
-  if (x > 9) {
-  x = 9;
-}
-  if (y < 0) {
-  y = 5;
-}
-*/
-this.row = row;
-Tiles = new Tiles[row][row];
-Random random = new Random();
-for (int i = 0; i < x; i++) {
-  for (int j = 0; j < x; j++) {
-    if (random.nextInt(counter) + 1 == isClicked) {
-      Tiles[i][j] = new Tiles(true);
-      isClicked++;
-    }
-    else {
-      Tiles[i][j] = new Tiles(false);
-    }
-  }
-}
+public Board(int rowVal, int colVal, int numOfMines) {
+  row = rowVal;
+  col = colVal;
+  numMines = numOfMines;
+  board = new Tiles[rowVal][colVal];
+  createBoard();
 }
 
-//basically counts all the spaces available, then make it so that there is a grid.
-//We can subtract the number of mines and the tiles we have clicked to see if we are done.
+public Board(int rowVal, int colVal) {
+  row = rowVal;
+  col = colVal;
+  board = new Tiles[rowVal][colVal];
+}
 
-public boolean isChecked() {
-  return row * row - checked - isClicked == 0;
+
+//this method contains 3 helpher methods that will
+//actually create the board
+private void createBoard() {
+  placeMines();
+  fillBoard();
+  calculateNearbyMines();
 }
 
 //selects a random position of the board and makes import junit.framework.TestCase;
@@ -85,6 +70,38 @@ public void calculateNearbyMines() {
   }
 }
 
+public boolean done() {
+  return row * row - numMines - fieldsAllreadyExplored
+  == 0;
+}
+
+public void display() {
+  // display x coordinates
+  System.out.print("     ");
+  for (int i = 0; i <row; i++) {
+    if (i < 10) {
+      System.out.print(i + "  ");
+    } else {
+      System.out.print(i + " ");
+    }
+  }
+  System.out.println("\n");
+
+  // display all lines
+  for (int i = 0; i < row; i++) {
+    if (i < 10) {
+      System.out.print(i + "    ");
+    } else {
+      System.out.print(i + "   ");
+    }
+
+    for(int j = 0; j < maxLength; j++) {
+      System.out.print(fields[i][j].getAppearance() + "  ");
+    }
+    System.out.println("\n");
+  }
+}
+
 //helper method for the calculateNearbyMines method.
 //checks 8 neighboring tiles and the mineCount
 //keeps track of how many mines are present in the 8
@@ -116,54 +133,81 @@ public Tiles[][] getBoard() {
   return board;
 }
 
+public boolean win() {
+  return win;
+}
+
+public String toString() {
+  String result = "";
+  for (int r = 0; r < row; r++) {
+    for (int c = 0; c < col; c++) {
+      result += board[r][c].getSymbol() + " ";
+    }
+    result += "\n";
+  }
+  return result;
+}
+
+public void reveal(int r, int c) {
+  ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
+  board[r][c].reveal();
+  if (board[r][c].isMine()) {
+    win = false;
+    board[r][c].setSymbol();
+  }
+  else {
+    checkNeighbors(r, c);
+    board[r][c].setSymbol();
+  }
+  if (board[r][c].getNumNearbyMines() == 0) {
+    for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
+      if (!nonMineNeighborTiles.get(i).isRevealed()) {
+        reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+      }
+    }
+  }
+}
+
+public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
+  ArrayList<Tiles> result = new ArrayList<Tiles>();
+  if (r-1 >= 0 && c-1 >= 0 && !board[r-1][c-1].isMine())
+    result.add(board[r-1][c-1]);
+  if (r-1 >= 0 && !board[r-1][c].isMine())
+    result.add(board[r-1][c]);
+  if (r-1 >= 0 && c+1 < row && !board[r-1][c+1].isMine())
+    result.add(board[r-1][c+1]);
+  if (c-1 >= 0 && !board[r][c-1].isMine())
+    result.add(board[r][c-1]);
+  if (c+1 < col && !board[r][c+1].isMine())
+    result.add(board[r][c+1]);
+  if (r+1 < row && c-1 >= 0 && !board[r+1][c-1].isMine())
+    result.add(board[r+1][c-1]);
+  if (r+1 < row && !board[r+1][c].isMine())
+    result.add(board[r+1][c]);
+  if (r+1 < row && c+1 < col && !board[r+1][c+1].isMine())
+    result.add(board[r+1][c+1]);
+  return result;
+}
+
+
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
 
 public static void main(String[] args) {
-  Board test = new Board(2, 2);
-  Tiles[][] boardd = test.getBoard();
-  boardd[0][0] = new Tiles(0, 0, false);
-  boardd[0][1] = new Tiles(0, 1, true);
-  boardd[1][0] = new Tiles(1, 0, true);
-  boardd[1][1] = new Tiles(1, 1, true);
-  test.checkNeighbors(0, 0);
-  System.out.println(boardd[0][0].getNumNearbyMines());
+  Board test = new Board(6, 6);
+  Tiles[][] board = test.getBoard();
+  test.fillBoard();
+  boardd[0][0] = new Tiles(0, 0, true);
+  //boardd[0][1] = new Tiles(0, 1, true);
+  //boardd[1][0] = new Tiles(1, 0, true);
+  //boardd[1][1] = new Tiles(1, 1, true);
+  //test.checkNeighbors(0, 0);
+  //System.out.println(boardd[0][0].getNumNearbyMines());
+  System.out.println(test);
   //should return 3.
   //it returns 3.
 }
 
-
-
-
-
-
-/*
-//makes the board.
-  public String toString(int x, int y) {
-    String result = "";
-    for (int x = 0; x < data.length; x++) {
-      for (int y = 0; y < data[x].length; y++) {
-        s += " " + data[i][x];
-        }
-        s += "|" + '\n' + "|";
-      }
-    }
-//a helper method in which we can use to create different keys on the board.
-  public int randomize(int x) {
-    Math.random();
-  }
-  public String win() {
-    if (numMines = 0) {
-      //return winning message.
-    }
-  }
-  public String lose() {
-    if (isClicked )
-    //return error message. Not sure where these methods belong.
-  }
-
-}
-*/
 
 }
