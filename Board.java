@@ -119,16 +119,16 @@ public void reveal(int r, int c) {
   ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
   board[r][c].reveal();
   if (board[r][c].isMine()) {
-    win() = false;
+    win = false;
     board[r][c].setSymbol();
   }
   else {
-    board[r][c].checkNeighbors();
+    checkNeighbors(r, c);
     board[r][c].setSymbol();
   }
   if (board[r][c].getNumNearbyMines() == 0) {
     for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
-      if (!nonMineNeighborTiles.get(i).isRevealed();) {
+      if (!nonMineNeighborTiles.get(i).isRevealed()) {
         reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
       }
     }
