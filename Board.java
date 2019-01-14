@@ -170,7 +170,7 @@ public void getInput (Scanner scanner) {
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
-
+/*
 public static void main(String[] args) {
   Board test = new Board(6, 6);
   Tiles[][] boardd = test.getBoard();
@@ -185,11 +185,7 @@ public static void main(String[] args) {
   //should return 3.
   //it returns 3.
 }
-
-
-
-
-
+*/
 
 /*
 //makes the board.

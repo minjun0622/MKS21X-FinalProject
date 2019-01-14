@@ -5,6 +5,16 @@ public class MineSweeper {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Board board = new Board(7, 7);
+    
+    /*
+    _ _ _ _ _ _
+    _ _ _ _ _ _
+    _ _ _ _ _ _
+    _ _ _ _ _ _
+    _ _ _ _ _ _
+    _ _ _ _ _ _
+    */
+
     board.fillBoard();
     board.calculateNearbyMines();
     board.getBoard()[3][3] = new Tiles(3, 3, true);
