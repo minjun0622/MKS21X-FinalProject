@@ -205,7 +205,6 @@ public static void main(String[] args) {
     if (isClicked )
     //return error message. Not sure where these methods belong.
   }
-
 }
 */
 
