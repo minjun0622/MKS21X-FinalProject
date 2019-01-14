@@ -5,7 +5,7 @@ public class Board {
 
 private Tiles[][] board;
 private int row, col, numMines;
-private boolean win;
+private boolean clickedMine;
 
 //constructor for board.
 public Board(int rowVal, int colVal, int numOfMines) {
@@ -13,6 +13,7 @@ public Board(int rowVal, int colVal, int numOfMines) {
   col = colVal;
   numMines = numOfMines;
   board = new Tiles[rowVal][colVal];
+  clickedMine = false;
   createBoard();
 }
 
@@ -100,8 +101,8 @@ public Tiles[][] getBoard() {
   return board;
 }
 
-public boolean win() {
-  return win;
+public boolean clickedMine() {
+  return clickedMine;
 }
 
 public String toString() {
@@ -119,17 +120,17 @@ public void reveal(int r, int c) {
   ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
   board[r][c].reveal();
   if (board[r][c].isMine()) {
-    win = false;
+    clickedMine = true;
     board[r][c].setSymbol();
   }
   else {
     checkNeighbors(r, c);
     board[r][c].setSymbol();
-  }
-  if (board[r][c].getNumNearbyMines() == 0) {
-    for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
-      if (!nonMineNeighborTiles.get(i).isRevealed()) {
-        reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+    if (board[r][c].getNumNearbyMines() == 0) {
+      for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
+        if (!nonMineNeighborTiles.get(i).isRevealed()) {
+          reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+        }
       }
     }
   }
@@ -162,6 +163,8 @@ public void getInput (Scanner scanner) {
   int colValue = Integer.parseInt(scanner.next());
   if (input.equals("r"))
     reveal(rowValue, colValue);
+  if (input.equals("e"))
+    clickedMine = true;
 }
 
 //this is a main method made to check if
