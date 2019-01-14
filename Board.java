@@ -6,7 +6,10 @@ public class Board {
 private Tiles[][] board;
 private int row, col, numMines;
 private boolean win;
+<<<<<<< HEAD
 private int fieldsAllreadyExplored;
+=======
+>>>>>>> 19241e210a92c0a0343216c348dbaff1d7e52043
 
 //constructor for board.
 public Board(int rowVal, int colVal, int numOfMines) {
@@ -196,7 +199,11 @@ public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
 
 public static void main(String[] args) {
   Board test = new Board(6, 6);
+<<<<<<< HEAD
   Tiles[][] board = test.getBoard();
+=======
+  Tiles[][] boardd = test.getBoard();
+>>>>>>> 19241e210a92c0a0343216c348dbaff1d7e52043
   test.fillBoard();
   boardd[0][0] = new Tiles(0, 0, true);
   //boardd[0][1] = new Tiles(0, 1, true);
@@ -210,4 +217,38 @@ public static void main(String[] args) {
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+/*
+//makes the board.
+  public String toString(int x, int y) {
+    String result = "";
+    for (int x = 0; x < data.length; x++) {
+      for (int y = 0; y < data[x].length; y++) {
+        s += " " + data[i][x];
+        }
+        s += "|" + '\n' + "|";
+      }
+    }
+//a helper method in which we can use to create different keys on the board.
+  public int randomize(int x) {
+    Math.random();
+  }
+  public String win() {
+    if (numMines = 0) {
+      //return winning message.
+    }
+  }
+  public String lose() {
+    if (isClicked )
+    //return error message. Not sure where these methods belong.
+  }
+}
+*/
+
+>>>>>>> 19241e210a92c0a0343216c348dbaff1d7e52043
 }
