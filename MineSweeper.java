@@ -39,12 +39,10 @@ public static void main(String[] args) {
     if (args[1].equals("medium"))
       int x = 10;
       int y = 10;
-
     if (args[1].equals("hard"))
       int x = 15;
       int y = 15;
 */
-
     Terminal terminal = TerminalFacade.createTerminal();
     terminal.enterPrivateMode();
 
@@ -56,6 +54,7 @@ public static void main(String[] args) {
     while(running){
 
 			terminal.moveCursor(x,y);
+
 
       Key key = terminal.readInput();
 

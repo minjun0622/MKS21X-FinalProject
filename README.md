@@ -15,4 +15,4 @@
 
 1/13/19
 The lanterna code sample was studied and Minjun figured out how the code works and the logistics of it. He is implementing the necessities that are involved with the main method. Still has a question on the class structure and how we are going to implement methods from the Board class. Will discuss with Chong later in the day.
-Things still incomplete.
+
