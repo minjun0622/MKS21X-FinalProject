@@ -156,6 +156,13 @@ public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
   return result;
 }
 
+public void getInput (Scanner scanner) {
+  String input = scanner.next();
+  int rowValue = Integer.parseInt(scanner.next());
+  int colValue = Integer.parseInt(scanner.next());
+  if (input.equals("r"))
+    reveal(rowValue, colValue);
+}
 
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
