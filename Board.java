@@ -6,10 +6,6 @@ public class Board {
 private Tiles[][] board;
 private int row, col, numMines;
 private boolean win;
-<<<<<<< HEAD
-private int fieldsAllreadyExplored;
-=======
->>>>>>> 19241e210a92c0a0343216c348dbaff1d7e52043
 
 //constructor for board.
 public Board(int rowVal, int colVal, int numOfMines) {
@@ -70,38 +66,6 @@ public void calculateNearbyMines() {
       if (!board[r][c].isMine())
         checkNeighbors(r, c);
     }
-  }
-}
-
-public boolean done() {
-  return row * row - numMines - fieldsAllreadyExplored
-  == 0;
-}
-
-public void display() {
-  // display x coordinates
-  System.out.print("     ");
-  for (int i = 0; i <row; i++) {
-    if (i < 10) {
-      System.out.print(i + "  ");
-    } else {
-      System.out.print(i + " ");
-    }
-  }
-  System.out.println("\n");
-
-  // display all lines
-  for (int i = 0; i < row; i++) {
-    if (i < 10) {
-      System.out.print(i + "    ");
-    } else {
-      System.out.print(i + "   ");
-    }
-
-    for(int j = 0; j < maxLength; j++) {
-      System.out.print(fields[i][j].getAppearance() + "  ");
-    }
-    System.out.println("\n");
   }
 }
 
@@ -171,6 +135,7 @@ public void reveal(int r, int c) {
   }
 }
 
+//This is a method that checks if something is a mine or not.
 public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
   ArrayList<Tiles> result = new ArrayList<Tiles>();
   if (r-1 >= 0 && c-1 >= 0 && !board[r-1][c-1].isMine())
@@ -199,11 +164,7 @@ public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
 
 public static void main(String[] args) {
   Board test = new Board(6, 6);
-<<<<<<< HEAD
   Tiles[][] board = test.getBoard();
-=======
-  Tiles[][] boardd = test.getBoard();
->>>>>>> 19241e210a92c0a0343216c348dbaff1d7e52043
   test.fillBoard();
   boardd[0][0] = new Tiles(0, 0, true);
   //boardd[0][1] = new Tiles(0, 1, true);
@@ -215,13 +176,6 @@ public static void main(String[] args) {
   //should return 3.
   //it returns 3.
 }
-
-
-<<<<<<< HEAD
-=======
-
-
-
 
 /*
 //makes the board.
@@ -250,5 +204,4 @@ public static void main(String[] args) {
 }
 */
 
->>>>>>> 19241e210a92c0a0343216c348dbaff1d7e52043
 }

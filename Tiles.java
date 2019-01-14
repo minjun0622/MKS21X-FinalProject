@@ -1,18 +1,19 @@
-public class Tiles{
+public class Tiles /*extends Board?? */ {
 
-  private boolean isClicked; //, isFlagged, isRevealed;
-  //private int x, y, numNearbyMines; I think that the board has this class.
+  private boolean isMine, isFlagged, isRevealed;
+  private int x, y, numNearbyMines;
   private String symbol;
 
   //constructor for Tiles
-  public Tiles(/*int xVal, int yVal, */boolean isMined) {
-    /*x = xVal;
+  public Tiles(int xVal, int yVal, boolean isMined) {
+    x = xVal;
     y = yVal;
-    */
-    //The X and Y coordinates
-    isClicked = false;
-    this.isMined = isMined;
-    symbol = null;
+    isMine = isMined;
+    isFlagged = false;
+    isRevealed = false;
+    numNearbyMines = 0;
+    //the symbol that is going to display what kind of tile it is
+    symbol = "_";
   }
   /*
   needs to be worked on/is toString for Tiles needed?
