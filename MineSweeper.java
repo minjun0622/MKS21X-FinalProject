@@ -1,29 +1,36 @@
-import com.googlecode.lanterna.TerminalFacade;
-import com.googlecode.lanterna.input.Key;
-import com.googlecode.lanterna.input.Key.Kind;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.Terminal.Color;
-import com.googlecode.lanterna.terminal.TerminalSize;
-import com.googlecode.lanterna.LanternaException;
-import com.googlecode.lanterna.input.CharacterPattern;
-import com.googlecode.lanterna.input.InputDecoder;
-import com.googlecode.lanterna.input.InputProvider;
-import com.googlecode.lanterna.input.Key;
-import com.googlecode.lanterna.input.KeyMappingProfile;
-
+import java.util.*;
+import java.io.*;
 
 public class MineSweeper {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    Board board = new Board(7, 7);
+    board.fillBoard();
+    board.calculateNearbyMines();
+    board.getBoard()[3][3] = new Tiles(3, 3, true);
+    board.getBoard()[1][1] = new Tiles(1, 1, true);
 
-public static void putString(int r, int c,Terminal t, String s){
-  t.moveCursor(r,c);
-  for(int i = 0; i < s.length();i++){
-    t.putCharacter(s.charAt(x));
+    while (!board.clickedMine()) {
+      System.out.println();
+      System.out.println();
+      System.out.println(board);
+      System.out.println("Format for revealing a Tile: r rowValue colValue ");
+      System.out.println("Ex: r 0 0");
+      System.out.println();
+      System.out.println("Format for exiting the game: e anyNumber anyNumber");
+      System.out.println("Ex: e 10000 1");
+      System.out.println();
+      board.getInput(scanner);
+    }
+    System.out.println();
+    System.out.println();
+    System.out.println(board);
+    System.out.println("You clicked on the mine/exited.");
+    scanner.close();
   }
 }
 
-public static void main(String[] args) {
-  int x = 5;
-  int y = 5;
+
   /*
   //so we can pick the difficulty
   if (args.length == 0) {
@@ -41,68 +48,4 @@ public static void main(String[] args) {
       int x = 15;
       int y = 15;
 */
-    Terminal terminal = TerminalFacade.createTerminal();
-    terminal.enterPrivateMode();
 
-    boolean running = true;
-
-    long tStart = System.currentTimeMillis();
-		long lastSecond = 0;
-
-    while(running){
-
-			terminal.moveCursor(x,y);
-
-
-      Key key = terminal.readInput();
-
-      if (key != null)
-      {
-      if (key.getKind() == Key.Kind.Escape) {
-        terminal.exitPrivateMode();
-				System.exit(0);
-      }
-      if (key.getKind() == Key.Kind.ArrowLeft) {
-      	terminal.moveCursor(x,y);
-      	terminal.putCharacter(' ');
-      	x--;
-      	}
-      if (key.getKind() == Key.Kind.ArrowRight) {
-        terminal.moveCursor(x,y);
-      	terminal.putCharacter(' ');
-				x++;
-  			}
-      if (key.getKind() == Key.Kind.ArrowUp) {
-    		terminal.moveCursor(x,y);
-				terminal.putCharacter(' ');
-    		y--;
-  			}
-  		if (key.getKind() == Key.Kind.ArrowDown) {
-      	terminal.moveCursor(x,y);
-    		terminal.putCharacter(' ');
-    		y++;
-  			}
-      if (key.getKind() == Key.Kind.NormalKey) {
-        if (isMine())
-      terminal.putCharacter('x');
-      }
-    }
-  }
-      while (running) {
-      long tEnd = System.currentTimeMillis();
-      long millis = tEnd - tStart;
-      putString(1,2,terminal,"Milliseconds since start of program: "+millis);
-      if(millis/1000 > lastSecond){
-        lastSecond = millis / 1000;
-        //one second has passed.
-        putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-      }
-    }
-    if (numMines = 0) {
-      running = false;
-      terminal.exitPrivateMode();
-      System.out.println("Game won! Time took for finishing: " +lastSecond);
-    }
-
-  }
-}
