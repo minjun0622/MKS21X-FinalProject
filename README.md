@@ -17,10 +17,8 @@
 Directions for the Code:
 You can play the game by selecting two coordinates,
 the first number is the x direction of the board and the second digit is the y direction.
-<<<<<<< HEAD
 The board goes up to 0 - 6 in both x and y direcitons.
 
 The Monkey branch was created by Minjun and the Yur branch was created by Chong.
-=======
+
 The board goes up to 0 - 6 in both x and y directions.
->>>>>>> 0deb07f7e10ad9653b565c37c3204c1d24347fe8
