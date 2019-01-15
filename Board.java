@@ -106,7 +106,11 @@ public boolean clickedMine() {
 }
 
 public String toString() {
-  String result = "";
+  String result = "    ";
+  for (int i = 0; i < row; i++) {
+    result += i + " ";
+  }
+  result += "\n";
   for (int r = 0; r < row; r++) {
     for (int c = 0; c < col; c++) {
       result += board[r][c].getSymbol() + " ";
