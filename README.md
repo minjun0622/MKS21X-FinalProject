@@ -22,3 +22,12 @@ The board goes up to 0 - 6 in both x and y direcitons.
 The Monkey branch was created by Minjun and the Yur branch was created by Chong.
 
 The board goes up to 0 - 6 in both x and y directions.
+
+1/14/19
+Looked at other people's demos and thought they were good.
+
+1/15/19
+Chong started to edit the toString. Minjun started the difficulty input through the args.
+
+1/16/19
+Minjun realized a critical mistake and that args.length and arg[int] are different! Chong has gotten started in the Flags method in the Board/Tiles class.
