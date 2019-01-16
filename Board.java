@@ -172,6 +172,12 @@ public void getInput (Scanner scanner) {
     clickedMine = true;
 }
 
+public void flag(int r, int c) {
+  if (!board[r][c].isRevealed()) {
+    board[r][c].setFlag();
+  }
+}
+
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
