@@ -7,7 +7,6 @@ public class MineSweeper {
     if (args.length == 0) {
       System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
     }
-
     if (args[1].equals("easy")) {
     int x = 5;
     int y = 5;
@@ -27,7 +26,7 @@ public class MineSweeper {
     }
 
     Scanner scanner = new Scanner(System.in);
-    //Board board = new Board(7, 7);
+    Board board = new Board(7, 7);
 
     /*
     _ _ _ _ _ _
