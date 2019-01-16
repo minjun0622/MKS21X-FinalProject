@@ -110,8 +110,9 @@ public String toString() {
   for (int i = 0; i < row; i++) {
     result += i + " ";
   }
-  result += "\n";
+  result += "\n\n";
   for (int r = 0; r < row; r++) {
+    result += " " + r + "  ";
     for (int c = 0; c < col; c++) {
       result += board[r][c].getSymbol() + " ";
     }
