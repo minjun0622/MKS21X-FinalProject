@@ -79,7 +79,12 @@ public class Tiles /*extends Board?? */ {
         symbol = "" + numNearbyMines;
       }
     }
-    else symbol = "_";
+    else if (isFlagged) {
+      symbol = "F";
+    }
+    else {
+      symbol = "_";
+    }
   }
 
 
