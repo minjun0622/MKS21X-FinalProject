@@ -79,7 +79,12 @@ public class Tiles /*extends Board?? */ {
         symbol = "" + numNearbyMines;
       }
     }
-    else symbol = "_";
+    if (!isRevealed && isFlagged) {
+      symbol = "F";
+    }
+    if (!isRevealed && !isFlagged) {
+      symbol = "_";
+    }
   }
 
 
@@ -87,15 +92,11 @@ public class Tiles /*extends Board?? */ {
   //different actions depending on whether the tile is
   //already flagged, not flagged, revealed, etc.
   //needs more work probably.
-  public void setFlag(boolean flagged) {
-    isFlagged = flagged;
-    if (!isRevealed) {
-      if (isFlagged)
-        symbol = "F";
-
-    }
-  }
   */
+
+  public void setFlag() {
+    isFlagged = !isFlagged;
+  }
 
 
 
