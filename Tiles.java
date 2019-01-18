@@ -82,7 +82,7 @@ public class Tiles /*extends Board?? */ {
     if (!isRevealed && isFlagged) {
       symbol = "F";
     }
-    else {
+    if (!isRevealed && !isFlagged) {
       symbol = "_";
     }
   }

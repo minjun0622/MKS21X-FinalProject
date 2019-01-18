@@ -31,3 +31,6 @@ Chong started to edit the toString. Minjun started the difficulty input through 
 
 1/16/19
 Minjun realized a critical mistake and that args.length and arg[int] are different! Chong has gotten started in the Flags method in the Board/Tiles class.
+
+1/17/19
+Chong finished implementing the flag method in the board class and flag boolean of the tiles class to finaly create the flagging part of the game. It works properly and now we need to fix just a few more methods for the game to be completely functional.

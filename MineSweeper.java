@@ -3,6 +3,8 @@ import java.io.*;
 
 public class MineSweeper {
   public static void main(String[] args) {
+
+    /*
     //start game with intended difficulty.
     /*
     if (args.length == 0) {
@@ -27,8 +29,12 @@ public class MineSweeper {
     }
     */
 
+  
+
     Scanner scanner = new Scanner(System.in);
     Board board = new Board(7, 7);
+
+
 
     /*
     _ _ _ _ _ _
@@ -41,11 +47,13 @@ public class MineSweeper {
 
     */
 
+
+
     board.fillBoard();
     board.calculateNearbyMines();
     board.getBoard()[3][3] = new Tiles(3, 3, true);
     board.getBoard()[1][1] = new Tiles(1, 1, true);
-    board.getBoard()[6][6] = new Tiles(6, 6, true);
+    //board.getBoard()[6][6] = new Tiles(6, 6, true);
 
     while (!board.clickedMine()) {
       System.out.println();
@@ -53,6 +61,9 @@ public class MineSweeper {
       System.out.println(board);
       System.out.println("Format for revealing a Tile: r rowValue colValue ");
       System.out.println("Ex: r 0 0");
+      System.out.println();
+      System.out.println("Format for flagging a Tile: f rowValue colValue");
+      System.out.println("Ex: f 0 0");
       System.out.println();
       System.out.println("Format for exiting the game: e anyNumber anyNumber");
       System.out.println("Ex: e 10000 1");
