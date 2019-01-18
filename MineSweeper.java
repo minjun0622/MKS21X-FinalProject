@@ -3,30 +3,26 @@ import java.io.*;
 
 public class MineSweeper {
   public static void main(String[] args) {
-    //start game with intended difficulty.
-    if (args.length == 0) {
-      System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
-    }
-    if (args[0].equals("easy")) {
-    int x = 5;
-    int y = 5;
-    Board board = new Board(x,y);
-  }
-
-    if (args[0].equals("medium")) {
-      int x = 10;
-      int y = 10;
-      Board board = new Board(x,y);
-    }
-
-    if (args[0].equals("hard")) {
-      int x = 15;
-      int y = 15;
-      Board board = new Board(x,y);
-    }
 
     Scanner scanner = new Scanner(System.in);
-    //Board board = new Board(7, 7);
+
+    //start game with intended difficulty.
+    if (args.length == 0)
+      System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
+
+    else if (args.length == 1)
+      if (args[0].equals("easy")) {
+        Board board = new Board(5, 5);
+      }
+
+      else if (args[0].equals("medium")) {
+        board = new Board(10, 10);
+      }
+
+      else if (args[0].equals("hard"))
+        board = new Board(20, 20);
+
+   board = new Board(7,7);
 
     /*
     _ _ _ _ _ _
@@ -36,7 +32,6 @@ public class MineSweeper {
     _ _ _ _ _ _
     _ _ _ _ _ _
     depends on difficulty.
-
     */
 
     board.fillBoard();
