@@ -60,6 +60,9 @@ public class MineSweeper {
       System.out.println("Format for revealing a Tile: r rowValue colValue ");
       System.out.println("Ex: r 0 0");
       System.out.println();
+      System.out.println("Format for flagging a Tile: f rowValue colValue");
+      System.out.println("Ex: f 0 0");
+      System.out.println();
       System.out.println("Format for exiting the game: e anyNumber anyNumber");
       System.out.println("Ex: e 10000 1");
       System.out.println();
