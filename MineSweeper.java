@@ -7,14 +7,25 @@ public class MineSweeper {
     Scanner scanner = new Scanner(System.in);
 
     //start game with intended difficulty.
-    if (args.length == 0) {
+    if (args.length == 0)
       System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
-    }
 
-    if (args.length == 1) {
-      if (args[0].equals("easy"))
-    }
+    else if (args.length == 1)
+      if (args[0].equals("easy")) {
+        Board board = new Board(5, 5);
+      }
 
+      else if (args[0].equals("medium")) {
+        Board board = new Board(10, 10);
+      }
+
+      else if (args[0].equals("hard"))
+        Board board = new Board(20, 20); {
+        }
+        else {
+
+  Board board = new Board(7,7);
+}
 
     /*
     _ _ _ _ _ _

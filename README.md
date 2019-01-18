@@ -31,3 +31,6 @@ Chong started to edit the toString. Minjun started the difficulty input through 
 
 1/16/19
 Minjun realized a critical mistake and that args.length and arg[int] are different! Chong has gotten started in the Flags method in the Board/Tiles class.
+
+1/17/19
+Chong ran into a problem with the Yur class. While adding new code, there has been issue with branching and changing. That issue has been fixed.  
