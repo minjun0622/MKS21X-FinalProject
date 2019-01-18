@@ -16,16 +16,13 @@ public class MineSweeper {
       }
 
       else if (args[0].equals("medium")) {
-        Board board = new Board(10, 10);
+        board = new Board(10, 10);
       }
 
       else if (args[0].equals("hard"))
-        Board board = new Board(20, 20); {
-        }
-        else {
+        board = new Board(20, 20);
 
-  Board board = new Board(7,7);
-}
+   board = new Board(7,7);
 
     /*
     _ _ _ _ _ _
