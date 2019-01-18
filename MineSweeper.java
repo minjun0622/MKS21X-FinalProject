@@ -4,6 +4,7 @@ import java.io.*;
 public class MineSweeper {
   public static void main(String[] args) {
     //start game with intended difficulty.
+    /*
     if (args.length == 0) {
       System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
     }
@@ -24,9 +25,10 @@ public class MineSweeper {
       int y = 15;
       Board board = new Board(x,y);
     }
+    */
 
     Scanner scanner = new Scanner(System.in);
-    //Board board = new Board(7, 7);
+    Board board = new Board(7, 7);
 
     /*
     _ _ _ _ _ _
