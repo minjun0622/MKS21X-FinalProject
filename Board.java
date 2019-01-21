@@ -100,14 +100,24 @@ public void checkNeighbors(int r, int c) {
 public Tiles[][] getBoard() {
   return board;
 }
-
+//tells you if a mine has been clicked, and if so, it will return true.
 public boolean clickedMine() {
   return clickedMine;
 }
 
+//prints the board out, also creates the numbered columns and rows on the board.
 public String toString() {
-  String result = "";
+  String result = "    ";
+  /*
+  for (int i = 0; i < row; i++) {
+    if (i < 10)
+      result += i + " ";
+
+  }
+  */
+  result += "\n\n";
   for (int r = 0; r < row; r++) {
+    result += " " + r + "  ";
     for (int c = 0; c < col; c++) {
       result += board[r][c].getSymbol() + " ";
     }
@@ -116,6 +126,7 @@ public String toString() {
   return result;
 }
 
+//a method in which if the bombs are revealed, it sets them as true and reveals the location.
 public void reveal(int r, int c) {
   ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
   board[r][c].reveal();
@@ -136,6 +147,13 @@ public void reveal(int r, int c) {
   }
 }
 
+//method that when flagged,
+public void flag(int r, int c) {
+  board[r][c].setFlag();
+  board[r][c].setSymbol();
+}
+
+//If it is not a mine, then
 public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
   ArrayList<Tiles> result = new ArrayList<Tiles>();
   if (r-1 >= 0 && c-1 >= 0 && !board[r-1][c-1].isMine())
@@ -165,12 +183,14 @@ public void getInput (Scanner scanner) {
     reveal(rowValue, colValue);
   if (input.equals("e"))
     clickedMine = true;
+  if (input.equals("f"))
+    flag(rowValue, colValue);
 }
 
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
-/*
+
 public static void main(String[] args) {
   Board test = new Board(6, 6);
   Tiles[][] boardd = test.getBoard();
@@ -185,5 +205,37 @@ public static void main(String[] args) {
   //should return 3.
   //it returns 3.
 }
+
+
+
+
+
+
+/*
+//makes the board.
+  public String toString(int x, int y) {
+    String result = "";
+    for (int x = 0; x < data.length; x++) {
+      for (int y = 0; y < data[x].length; y++) {
+        s += " " + data[i][x];
+        }
+        s += "|" + '\n' + "|";
+      }
+    }
+//a helper method in which we can use to create different keys on the board.
+  public int randomize(int x) {
+    Math.random();
+  }
+  public String win() {
+    if (numMines = 0) {
+      //return winning message.
+    }
+  }
+  public String lose() {
+    if (isClicked )
+    //return error message. Not sure where these methods belong.
+  }
+}
 */
+
 }

@@ -70,6 +70,11 @@ public class Tiles /*extends Board?? */ {
     return symbol;
   }
 
+/*
+this sets the symbols accordingly, if it is revealing a mine,
+it will become an x if it is a mine.
+however, if it was flagged, then a F will take over and you wil know that a mine is there.
+*/
   public void setSymbol() {
     if (isRevealed) {
       if (isMine) {
@@ -79,24 +84,22 @@ public class Tiles /*extends Board?? */ {
         symbol = "" + numNearbyMines;
       }
     }
-    else symbol = "_";
+    if (!isRevealed && isFlagged) {
+      symbol = "F";
+    }
+    if (!isRevealed && !isFlagged) {
+      symbol = "_";
+    }
   }
-
 
   /*
   //different actions depending on whether the tile is
   //already flagged, not flagged, revealed, etc.
   //needs more work probably.
-  public void setFlag(boolean flagged) {
-    isFlagged = flagged;
-    if (!isRevealed) {
-      if (isFlagged)
-        symbol = "F";
-
-    }
-  }
   */
 
-
+  public void setFlag() {
+    isFlagged = !isFlagged;
+  }
 
 }
