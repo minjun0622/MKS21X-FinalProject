@@ -1,5 +1,14 @@
 
 # MKS21X-FinalProject
+Fall APCS 2018 final project MineSweeper by Chong Lee and Minjun Seo pd 3.
+
+# Instructions
+
+HOW TO COMPILE : javac MineSweeper.java
+
+HOT TO RUN : java MineSweeper easy/medium/hard
+
+# Development Log
 
 1/4/19 The first half of the period was spent on branching tutorials. We were successfully able to create a branch and then merge it to master again. Then, we laid the foundations for the project by creating the files that we would need. There was a mistake of making a branch before making the files so it was fixed.
 
@@ -40,3 +49,7 @@ Chong ran into a problem with the Yur branch. While adding new code, there has b
 
 1/18/19
 The difficulty has been implemented. However, there was a problem because the rows and columns, when it becomes a two digit number, it will push some numbers out of the way. Looking to fix that.
+
+1/20/18
+Chong worked on the board class by adding varibles that keeps track of how many mined tiles there are, how many are revealed, and if the board is completed (it is completed if number of numbered of revealed tiles equals the number of total tiles minus the number of mined tiles). Chong also edited the MineSweeper class (the main method) so when the board is fully revealed without revealing any mined tiles, the user gets a win message and the sanner closes. As of now, the user only needs to reveal every non mine tile instead of doing so and flagging all non mine tile as well, so we need to add another variable that keeps track of flags that are on mine tiles. The placeMines method still needs to be worked on.
+
