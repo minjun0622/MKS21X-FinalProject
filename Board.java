@@ -8,13 +8,13 @@ public class Board {
   private ArrayList<Tiles> minedTiles;
 
   //constructor for board.
-  public Board(int rowVal, int colVal, int numOfMines) {
+  public Board(int rowVal, int colVal, int possibility) {
     row = rowVal;
     col = colVal;
-    numMines = numOfMines;
     board = new Tiles[rowVal][colVal];
     clickedMine = false;
-    createBoard();
+    exited = false;
+    createBoard(possibility);
   }
 
   public Board(int rowVal, int colVal) {
@@ -47,11 +47,11 @@ public class Board {
 
   //this method contains 3 helpher methods that will
   //actually create the board
-  private void createBoard() {
-    placeMines();
-    fillBoard();
+  private void createBoard(int possibility) {
+    placeMines(possibility);
     calculateNearbyMines();
     calculateNumMines();
+    calculateMinedTiles();
   }
 
   public int numMinedTiles() {
@@ -71,15 +71,13 @@ public class Board {
 
   //selects a random position of the board and makes import junit.framework.TestCase;
   //a bomb tile. While loop makes sure that the numMines of mines are placed.
-  public void placeMines() {
-    Random rand = new Random();
-    int randX = rand.nextInt(row);
-    int randY = rand.nextInt(col);
-    int minesLeftToBePlaced = numMines;
-    while(minesLeftToBePlaced >= 0) {
-      if (board[randX][randY] == null) {
-        board[randX][randY] = new Tiles(randX, randY, true);
-        minesLeftToBePlaced--;
+  public void placeMines(int possibility) {
+    Random random = new Random();
+    for (int r = 0; r < row; r++) {
+      for (int c = 0; c < col; c++) {
+        if (random.nextInt(100) < possibility)
+          board[r][c] = new Tiles(r, c, true);
+        else board[r][c] = new Tiles(r, c, false);
       }
     }
   }
