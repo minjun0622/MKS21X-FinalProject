@@ -4,7 +4,7 @@ import java.io.*;
 public class Board {
   private Tiles[][] board;
   private int row, col, numMines, numMinedTiles, revealedTiles;
-  private boolean clickedMine;
+  private boolean clickedMine, exited;
   private ArrayList<Tiles> minedTiles;
 
   //constructor for board.
@@ -27,23 +27,12 @@ public class Board {
     board = null;
   }
 
-<<<<<<< HEAD
-//selects a random position of the board and makes
-//a bomb tile. While loop makes sure that the numMines of mines are placed.
-public void placeMines() {
-  for (int i = 0; i < row; i++) {
-		for (int j = 0; j < col; j++) {
-      if (random.nextInt(numMines) + 1 == numMines) {
-        ArrayList
-				numMines++;
-=======
   public void calculateMinedTiles() {
     minedTiles = new ArrayList<Tiles>();
     for (int r = 0; r < row; r++) {
       for (int c = 0; c < col; c++) {
         if (board[r][c].isMine())
           minedTiles.add(board[r][c]);
->>>>>>> 9154c98c984c90e691a48ed0f476a0b646c0509c
       }
     }
   }
@@ -83,17 +72,19 @@ public void placeMines() {
   //selects a random position of the board and makes import junit.framework.TestCase;
   //a bomb tile. While loop makes sure that the numMines of mines are placed.
   public void placeMines() {
-    Random rand = new Random();
-    int randX = rand.nextInt(row);
-    int randY = rand.nextInt(col);
-    int minesLeftToBePlaced = numMines;
-    while(minesLeftToBePlaced >= 0) {
-      if (board[randX][randY] == null) {
-        board[randX][randY] = new Tiles(randX, randY, true);
-        minesLeftToBePlaced--;
+    for (int i = 0; i < row; i++) {
+      for (int j = 0; j < col; j++) {
+        if (random.nextInt(numMines) + 1 == numMines) {
+          ArrayList[i][j] = new Board(i, j, true);
+ 				numMines++;
       }
+       else {
+ 			Tiles[i][j] = new Board(i, j,false);
     }
-  }
+   }
+ }
+}
+
 
   //fills board by making the null positions of the
   //board into regular tiles.
@@ -118,15 +109,6 @@ public void placeMines() {
     }
   }
 
-<<<<<<< HEAD
-//prints the board out, also creates the numbered columns and rows on the board.
-public String toString() {
-  String result = "    ";
-  /*
-  for (int i = 0; i < row; i++) {
-    if (i < 10)
-      result += i + " ";
-=======
   //helper method for the calculateNearbyMines method.
   //checks 8 neighboring tiles and the mineCount
   //keeps track of how many mines are present in the 8
@@ -156,11 +138,14 @@ public String toString() {
   //an accessor method that returns the board.
   public Tiles[][] getBoard() {
     return board;
->>>>>>> 9154c98c984c90e691a48ed0f476a0b646c0509c
   }
 
   public boolean clickedMine() {
     return clickedMine;
+  }
+
+  public boolean exited() {
+    return exited;
   }
 
   public String toString() {
@@ -239,7 +224,7 @@ public String toString() {
     if (input.equals("r"))
       reveal(rowValue, colValue);
     if (input.equals("e"))
-      clickedMine = true;
+      exited = true;
     if (input.equals("f"))
       flag(rowValue, colValue);
     }
