@@ -17,15 +17,6 @@ public Board(int rowVal, int colVal, int numOfMines) {
   createBoard();
 }
 
-public Board(int rowVal, int colVal) {
-  row = rowVal;
-  col = colVal;
-  board = new Tiles[rowVal][colVal];
-}
-
-
-//this method contains 3 helpher methods that will
-//actually create the board
 private void createBoard() {
   placeMines();
   fillBoard();

@@ -102,4 +102,8 @@ however, if it was flagged, then a F will take over and you wil know that a mine
     isFlagged = !isFlagged;
   }
 
+  public void setFlag() {
+    isFlagged = !isFlagged;
+  }
+
 }
