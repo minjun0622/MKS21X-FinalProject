@@ -1,11 +1,14 @@
 
 # MKS21X-FinalProject
+Fall APCS 2018 final project MineSweeper by Chong Lee and Minjun Seo pd 3.
+
+# Instructions
 
 HOW TO COMPILE : javac MineSweeper.java
 
 HOT TO RUN : java MineSweeper easy/medium/hard
 
-
+# Development Log
 
 1/4/19 The first half of the period was spent on branching tutorials. We were successfully able to create a branch and then merge it to master again. Then, we laid the foundations for the project by creating the files that we would need. There was a mistake of making a branch before making the files so it was fixed.
 
