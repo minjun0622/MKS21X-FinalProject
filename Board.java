@@ -4,7 +4,7 @@ import java.io.*;
 public class Board {
   private Tiles[][] board;
   private int row, col, numMines, numMinedTiles, revealedTiles;
-  private boolean clickedMine;
+  private boolean clickedMine, exited;
   private ArrayList<Tiles> minedTiles;
 
   //constructor for board.
@@ -142,6 +142,10 @@ public class Board {
     return clickedMine;
   }
 
+  public boolean exited() {
+    return exited;
+  }
+
   public String toString() {
     String result = "    ";
     for (int i = 0; i < row; i++) {
@@ -218,7 +222,7 @@ public class Board {
     if (input.equals("r"))
       reveal(rowValue, colValue);
     if (input.equals("e"))
-      clickedMine = true;
+      exited = true;
     if (input.equals("f"))
       flag(rowValue, colValue);
     }
