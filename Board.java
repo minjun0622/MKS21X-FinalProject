@@ -5,6 +5,7 @@ public class Board {
   private Tiles[][] board;
   private int row, col, numMines, numMinedTiles, revealedTiles;
   private boolean clickedMine;
+  private ArrayList<Tiles> minedTiles;
 
   //constructor for board.
   public Board(int rowVal, int colVal, int numOfMines) {
@@ -24,6 +25,24 @@ public class Board {
 
   public Board() {
     board = null;
+  }
+
+  public void calculateMinedTiles() {
+    minedTiles = new ArrayList<Tiles>();
+    for (int r = 0; r < row; r++) {
+      for (int c = 0; c < col; c++) {
+        if (board[r][c].isMine())
+          minedTiles.add(board[r][c]);
+      }
+    }
+  }
+
+  public boolean flaggedAllMines() {
+    for (int i = 0; i < minedTiles.size(); i++) {
+      if (!minedTiles.get(i).isFlagged())
+        return false;
+    }
+    return true;
   }
 
   //this method contains 3 helpher methods that will
@@ -168,7 +187,7 @@ public class Board {
   }
 
   public boolean boardComplete() {
-    return row * col - numMinedTiles - revealedTiles == 0;
+    return row * col - numMinedTiles - revealedTiles == 0 && flaggedAllMines();
   }
 
   public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
