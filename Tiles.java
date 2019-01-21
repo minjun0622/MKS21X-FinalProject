@@ -9,9 +9,7 @@ public class Tiles /*extends Board?? */ {
     x = xVal;
     y = yVal;
     isMine = isMined;
-    //"X"
     isFlagged = false;
-    //"F"
     isRevealed = false;
     numNearbyMines = 0;
     //the symbol that is going to display what kind of tile it is
@@ -72,11 +70,6 @@ public class Tiles /*extends Board?? */ {
     return symbol;
   }
 
-/*
-this sets the symbols accordingly, if it is revealing a mine,
-it will become an x if it is a mine.
-however, if it was flagged, then a F will take over and you wil know that a mine is there.
-*/
   public void setSymbol() {
     if (isRevealed) {
       if (isMine) {
@@ -94,6 +87,7 @@ however, if it was flagged, then a F will take over and you wil know that a mine
     }
   }
 
+
   /*
   //different actions depending on whether the tile is
   //already flagged, not flagged, revealed, etc.
@@ -103,4 +97,7 @@ however, if it was flagged, then a F will take over and you wil know that a mine
   public void setFlag() {
     isFlagged = !isFlagged;
   }
+
+
+
 }
