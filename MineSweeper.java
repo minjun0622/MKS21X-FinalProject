@@ -4,12 +4,12 @@ import java.io.*;
 public class MineSweeper {
   public static void main(String[] args) {
 
-    
+
     Scanner scanner = new Scanner(System.in);
 
     //start game with intended difficulty.
 
-    Board board = new Board(1, 1);
+    Board board = new Board();
     if (args.length == 0) {
       System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
     }
@@ -23,7 +23,7 @@ public class MineSweeper {
       if (args[0].equals("hard"))
         board = new Board(15, 15);
       }
-  
+
     /*
     _ _ _ _ _ _
     _ _ _ _ _ _
@@ -40,12 +40,14 @@ public class MineSweeper {
     board.calculateNearbyMines();
     board.getBoard()[3][3] = new Tiles(3, 3, true);
     board.getBoard()[1][1] = new Tiles(1, 1, true);
+    board.calculateNumMines();
     //board.getBoard()[6][6] = new Tiles(6, 6, true);
 
-    while (!board.clickedMine()) {
+    while (!board.clickedMine() && !board.boardComplete()) {
       System.out.println();
       System.out.println();
       System.out.println(board);
+      System.out.println(board.numMinedTiles());
       System.out.println("Format for revealing a Tile: r rowValue colValue ");
       System.out.println("Ex: r 0 0");
       System.out.println();
@@ -57,10 +59,19 @@ public class MineSweeper {
       System.out.println();
       board.getInput(scanner);
     }
-    System.out.println();
-    System.out.println();
-    System.out.println(board);
-    System.out.println("You clicked on the mine/exited.");
-    scanner.close();
+    if (board.clickedMine()) {
+      System.out.println();
+      System.out.println();
+      System.out.println(board);
+      System.out.println("You clicked on the mine/exited.");
+      scanner.close();
+    }
+    else {
+      System.out.println();
+      System.out.println();
+      System.out.println(board);
+      System.out.println("You fully revealed every non-mine tiles!");
+      scanner.close();
+    }
   }
 }
