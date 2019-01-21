@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Board {
   private Tiles[][] board;
-  private int row, col, numMines;
+  private int row, col, numMines, numMinedTiles, revealedTiles;
   private boolean clickedMine;
 
   //constructor for board.
@@ -22,6 +22,9 @@ public class Board {
     board = new Tiles[rowVal][colVal];
   }
 
+  public Board() {
+    board = null;
+  }
 
   //this method contains 3 helpher methods that will
   //actually create the board
@@ -29,6 +32,22 @@ public class Board {
     placeMines();
     fillBoard();
     calculateNearbyMines();
+    calculateNumMines();
+  }
+
+  public int numMinedTiles() {
+    return numMinedTiles;
+  }
+
+  public void calculateNumMines() {
+    int result = 0;
+    for (int r = 0; r < row; r++) {
+      for (int c = 0; c < col; c++) {
+        if (board[r][c].isMine())
+          result++;
+      }
+    }
+    numMinedTiles = result;
   }
 
   //selects a random position of the board and makes import junit.framework.TestCase;
@@ -122,18 +141,21 @@ public class Board {
 
   public void reveal(int r, int c) {
     ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
-    board[r][c].reveal();
-    if (board[r][c].isMine()) {
-      clickedMine = true;
-      board[r][c].setSymbol();
-    }
-    else {
-      checkNeighbors(r, c);
-      board[r][c].setSymbol();
-      if (board[r][c].getNumNearbyMines() == 0) {
-        for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
-          if (!nonMineNeighborTiles.get(i).isRevealed()) {
-            reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+    if (!board[r][c].isRevealed()) {
+      board[r][c].reveal();
+      revealedTiles++;
+      if (board[r][c].isMine()) {
+        clickedMine = true;
+        board[r][c].setSymbol();
+      }
+      else {
+        checkNeighbors(r, c);
+        board[r][c].setSymbol();
+        if (board[r][c].getNumNearbyMines() == 0) {
+          for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
+            if (!nonMineNeighborTiles.get(i).isRevealed()) {
+              reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+            }
           }
         }
       }
@@ -143,6 +165,10 @@ public class Board {
   public void flag(int r, int c) {
     board[r][c].setFlag();
     board[r][c].setSymbol();
+  }
+
+  public boolean boardComplete() {
+    return row * col - numMinedTiles - revealedTiles == 0;
   }
 
   public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
