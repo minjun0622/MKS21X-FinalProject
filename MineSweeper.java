@@ -47,7 +47,6 @@ public class MineSweeper {
       System.out.println();
       System.out.println();
       System.out.println(board);
-      System.out.println(board.numMinedTiles());
       System.out.println("Format for revealing a Tile: r rowValue colValue ");
       System.out.println("Ex: r 0 0");
       System.out.println();
