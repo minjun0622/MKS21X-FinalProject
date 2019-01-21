@@ -3,7 +3,7 @@ import java.io.*;
 
 public class MineSweeper {
   public static void main(String[] args) {
-   
+
     //start game with intended difficulty.
     Board board = new Board();
     if (args.length == 0) {
@@ -11,19 +11,19 @@ public class MineSweeper {
     }
     else {
       if (args[0].equals("easy"))
-        board = new Board(5, 5);
+        board = new Board(6, 6, 10);
 
       if (args[0].equals("medium"))
-        board = new Board(10, 10);
+        board = new Board(8, 8, 15);
 
       if (args[0].equals("hard"))
-        board = new Board(15, 15);
+        board = new Board(10, 10, 20);
       }
 
 
 
     Scanner scanner = new Scanner(System.in);
-  
+
     /*
     _ _ _ _ _ _
     _ _ _ _ _ _
@@ -35,13 +35,14 @@ public class MineSweeper {
     */
 
 
-
+    /*
     board.getBoard()[3][3] = new Tiles(3, 3, true);
     board.getBoard()[1][1] = new Tiles(1, 1, true);
     board.fillBoard();
     board.calculateNearbyMines();
     board.calculateNumMines();
     board.calculateMinedTiles();
+    */
     //board.getBoard()[6][6] = new Tiles(6, 6, true);
 
     while (!board.exited() && !board.clickedMine() && !board.boardComplete()) {
