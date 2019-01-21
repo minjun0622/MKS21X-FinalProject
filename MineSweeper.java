@@ -44,7 +44,7 @@ public class MineSweeper {
     board.calculateMinedTiles();
     //board.getBoard()[6][6] = new Tiles(6, 6, true);
 
-    while (!board.clickedMine() && !board.boardComplete()) {
+    while (!board.exited() && !board.clickedMine() && !board.boardComplete()) {
       System.out.println();
       System.out.println();
       System.out.println(board);
@@ -63,7 +63,14 @@ public class MineSweeper {
       System.out.println();
       System.out.println();
       System.out.println(board);
-      System.out.println("You revealed a mine/exited.");
+      System.out.println("You revealed a mine.");
+      scanner.close();
+    }
+    else if (board.exited()) {
+      System.out.println();
+      System.out.println();
+      System.out.println(board);
+      System.out.println("You exited.");
       scanner.close();
     }
     else {
