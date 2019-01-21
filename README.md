@@ -17,7 +17,7 @@
 Directions for the Code:
 You can play the game by selecting two coordinates,
 the first number is the x direction of the board and the second digit is the y direction.
-The board goes up to 0 - 6 in both x and y direcitons.
+The board goes up to 0 - 6 in both x and y directions.
 
 The Monkey branch was created by Minjun and the Yur branch was created by Chong.
 
@@ -34,10 +34,9 @@ Minjun realized a critical mistake and that args.length and arg[int] are differe
 
 1/17/19
 
-Chong finished implementing the flag method in the board class and flag boolean of the tiles class to finaly create the flagging part of the game. It works properly and now we need to fix just a few more methods for the game to be completely functional.
+Chong finished implementing the flag method in the board class and flag boolean of the tiles class to finally create the flagging part of the game. It works properly and now we need to fix just a few more methods for the game to be completely functional.
 
-Chong ran into a problem with the Yur class. While adding new code, there has been issue with branching and changing. That issue has been fixed.
+Chong ran into a problem with the Yur branch. While adding new code, there has been issue with branching and changing. That issue has been fixed.
 
 1/18/19
-The difficulty has been implemented. However, there was a problem because the rows and columns, when it becomes a two digit number, it will push some numbers out of the way. Looking to fix that. 
-
+The difficulty has been implemented. However, there was a problem because the rows and columns, when it becomes a two digit number, it will push some numbers out of the way. Looking to fix that.

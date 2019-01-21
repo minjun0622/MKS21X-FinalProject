@@ -15,28 +15,26 @@ public class MineSweeper {
 
     else {
       if (args[0].equals("easy"))
-        board = new Board(5, 5, 10);
+        board = new Board(5, 5);
         //sets a board by the size of 5x5.
 
       if (args[0].equals("medium"))
-        board = new Board(10, 10, 10);
-        //sets a baord by the size of 10x10.
+        board = new Board(7, 7);
+        //sets a baord by the size of 7x7.
 
       if (args[0].equals("hard"))
-        board = new Board(15, 15, 15);
-        //sets a board by the size of 15x15.
+        board = new Board(9, 9);
+        //sets a board by the size of 9x9.
       }
 
 
     Scanner scanner = new Scanner(System.in);
 
-
-
     board.fillBoard();
     board.calculateNearbyMines();
     board.placeMines();
 
-    while (!board.clickedMine()) {
+    while (!board.clickedMine() || board.isFlagged()) {
       System.out.println();
       System.out.println();
       System.out.println(board);

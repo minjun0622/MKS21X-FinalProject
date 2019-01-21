@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.util.Random;
 
 public class Board {
 
@@ -17,25 +18,35 @@ public Board(int rowVal, int colVal, int numOfMines) {
   createBoard();
 }
 
+public Board(int rowVal, int colVal) {
+  row = rowVal;
+  col = colVal;
+  board = new Tiles[rowVal][colVal];
+}
+
+
+//this method contains 3 helpher methods that will
+//actually create the board
 private void createBoard() {
   placeMines();
   fillBoard();
   calculateNearbyMines();
 }
 
-//selects a random position of the board and makes import junit.framework.TestCase;
+//selects a random position of the board and makes
 //a bomb tile. While loop makes sure that the numMines of mines are placed.
 public void placeMines() {
-  Random rand = new Random();
-  int randX = rand.nextInt(row);
-  int randY = rand.nextInt(col);
-  int minesLeftToBePlaced = numMines;
-  while(minesLeftToBePlaced >= 0) {
-    if (board[randX][randY] == null) {
-      board[randX][randY] = new Tiles(randX, randY, true);
-      minesLeftToBePlaced--;
+  for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++) {
+      if (random.nextInt(numMines) + 1 == numMines) {
+        Tiles[i][j] = new Board(i, j, true);
+				minedFields++;
+      }
+      else {
+			Tiles[i][j] = new Board(i, j,false);
     }
   }
+}
 }
 
 //fills board by making the null positions of the
@@ -43,9 +54,9 @@ public void placeMines() {
 public void fillBoard() {
   for (int r = 0; r < row; r++) {
     for (int c = 0; c < col; c++) {
-      if (board[r][c] == null) {
+      //if (board[r][c] == null) {
         board[r][c] = new Tiles(r, c, false);
-      }
+
     }
   }
 }
@@ -124,6 +135,7 @@ public void reveal(int r, int c) {
   if (board[r][c].isMine()) {
     clickedMine = true;
     board[r][c].setSymbol();
+    numMines--;
   }
   else {
     checkNeighbors(r, c);
@@ -181,9 +193,9 @@ public void getInput (Scanner scanner) {
 //this is a main method made to check if
 //the checkNeighbors() method work or not.
 //It works properly.
-
+/*
 public static void main(String[] args) {
-  Board test = new Board(6, 6);
+  Board test = new Board(6, 6, 6);
   Tiles[][] boardd = test.getBoard();
   test.fillBoard();
   boardd[0][0] = new Tiles(0, 0, true);
@@ -196,6 +208,7 @@ public static void main(String[] args) {
   //should return 3.
   //it returns 3.
 }
+*/
 
 
 
