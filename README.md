@@ -40,3 +40,5 @@ Chong ran into a problem with the Yur branch. While adding new code, there has b
 
 1/18/19
 The difficulty has been implemented. However, there was a problem because the rows and columns, when it becomes a two digit number, it will push some numbers out of the way. Looking to fix that.
+
+1/21/19

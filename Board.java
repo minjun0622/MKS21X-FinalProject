@@ -39,8 +39,8 @@ public void placeMines() {
   for (int i = 0; i < row; i++) {
 		for (int j = 0; j < col; j++) {
       if (random.nextInt(numMines) + 1 == numMines) {
-        Tiles[i][j] = new Board(i, j, true);
-				minedFields++;
+        ArrayList
+				numMines++;
       }
       else {
 			Tiles[i][j] = new Board(i, j,false);
@@ -114,7 +114,6 @@ public String toString() {
   for (int i = 0; i < row; i++) {
     if (i < 10)
       result += i + " ";
-
   }
   */
   result += "\n\n";
