@@ -3,11 +3,9 @@ import java.io.*;
 
 public class MineSweeper {
   public static void main(String[] args) {
-
-
+   
     //start game with intended difficulty.
-
-    Board board = new Board(1, 1);
+    Board board = new Board();
     if (args.length == 0) {
       System.out.println("Please insert the difficulty. There are easy, medium, hard. Have fun.");
     }
@@ -23,11 +21,9 @@ public class MineSweeper {
       }
 
 
+
     Scanner scanner = new Scanner(System.in);
-    //Board board = new Board(7, 7);
-
-
-
+  
     /*
     _ _ _ _ _ _
     _ _ _ _ _ _
@@ -40,13 +36,15 @@ public class MineSweeper {
 
 
 
-    board.fillBoard();
-    board.calculateNearbyMines();
     board.getBoard()[3][3] = new Tiles(3, 3, true);
     board.getBoard()[1][1] = new Tiles(1, 1, true);
+    board.fillBoard();
+    board.calculateNearbyMines();
+    board.calculateNumMines();
+    board.calculateMinedTiles();
     //board.getBoard()[6][6] = new Tiles(6, 6, true);
 
-    while (!board.clickedMine()) {
+    while (!board.clickedMine() && !board.boardComplete()) {
       System.out.println();
       System.out.println();
       System.out.println(board);
@@ -61,10 +59,19 @@ public class MineSweeper {
       System.out.println();
       board.getInput(scanner);
     }
-    System.out.println();
-    System.out.println();
-    System.out.println(board);
-    System.out.println("You clicked on the mine/exited.");
-    scanner.close();
+    if (board.clickedMine()) {
+      System.out.println();
+      System.out.println();
+      System.out.println(board);
+      System.out.println("You revealed a mine/exited.");
+      scanner.close();
+    }
+    else {
+      System.out.println();
+      System.out.println();
+      System.out.println(board);
+      System.out.println("You won!");
+      scanner.close();
+    }
   }
 }
