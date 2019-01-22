@@ -4,25 +4,28 @@ import java.io.*;
 public class Board {
   private Tile[][] board;
   private int row, col, numMines, numMinedTiles, revealedTiles;
-  private boolean clickedMine;
-  private ArrayList<Tile> minedTiles;
+  private boolean clickedMine, exited;
+  private ArrayList<Tiles> minedTiles;
 
   //constructor for board.
-  public Board(int rowVal, int colVal, int numOfMines) {
+  public Board(int rowVal, int colVal, int possibility) {
     row = rowVal;
     col = colVal;
     numMines = numOfMines;
     board = new Tile[rowVal][colVal];
     clickedMine = false;
-    createBoard();
+    exited = false;
+    createBoard(possibility);
   }
 
+  /*
   public Board(int rowVal, int colVal) {
     row = rowVal;
     col = colVal;
     numMines = 25;
     board = new Tile[rowVal][colVal];
   }
+  */
 
   public Board() {
     board = null;
@@ -48,11 +51,11 @@ public class Board {
 
   //this method contains 3 helpher methods that will
   //actually create the board
-  private void createBoard() {
-    placeMines();
-    fillBoard();
+  private void createBoard(int possibility) {
+    placeMines(possibility);
     calculateNearbyMines();
     calculateNumMines();
+    calculateMinedTiles();
   }
 
   public int numMinedTiles() {
@@ -72,15 +75,14 @@ public class Board {
 
   //selects a random position of the board and makes import junit.framework.TestCase;
   //a bomb tile. While loop makes sure that the numMines of mines are placed.
-  public void placeMines() {
-    Random rand = new Random();
-    int minesLeftToBePlaced = numMines;
-    while(minesLeftToBePlaced > 0) {
-      int randX = rand.nextInt(row);
-      int randY = rand.nextInt(col);
-      if (board[randX][randY] == null) {
-        board[randX][randY] = new Tile(randX, randY, true);
-        minesLeftToBePlaced--;
+
+  public void placeMines(int possibility) {
+    Random random = new Random();
+    for (int r = 0; r < row; r++) {
+      for (int c = 0; c < col; c++) {
+        if (random.nextInt(100) < possibility)
+          board[r][c] = new Tiles(r, c, true);
+        else board[r][c] = new Tiles(r, c, false);
       }
     }
   }
@@ -141,6 +143,10 @@ public class Board {
 
   public boolean clickedMine() {
     return clickedMine;
+  }
+
+  public boolean exited() {
+    return exited;
   }
 
   public String toString() {
@@ -219,14 +225,17 @@ public class Board {
     if (input.equals("r"))
       reveal(rowValue, colValue);
     if (input.equals("e"))
-      clickedMine = true;
+      exited = true;
     if (input.equals("f"))
       flag(rowValue, colValue);
     }
 
+
+    /*
     //this is a main method made to check if
     //the checkNeighbors() method work or not.
     //It works properly.
+
 
     public static void main(String[] args) {
     Board test = new Board(6, 6);
@@ -234,6 +243,12 @@ public class Board {
     test.fillBoard();
     boardd[0][0] = new Tile(0, 0, true);
     System.out.println(test);
+
   }
+
+    //should return 3.
+    //it returns 3.
+
+    *
 
 }
