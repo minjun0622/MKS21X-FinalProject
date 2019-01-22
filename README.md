@@ -50,4 +50,13 @@ The difficulty has been implemented. However, there was a problem because the ro
 Chong worked on the board class by adding variables that keeps track of how many mined Tile there are, how many are revealed, and if the board is completed (it is completed if number of numbered of revealed Tile equals the number of total Tile minus the number of mined Tile). Chong also edited the MineSweeper class (the main method) so when the board is fully revealed without revealing any mined Tile, the user gets a win message and the scanner closes. As of now, the user only needs to reveal every non mine tile instead of doing so and flagging all non mine tile as well, so we need to add another variable that keeps track of flags that are on mine Tile. The placeMines method still needs to be worked on. Minjun worked on simplifying the code with more comments, however he did not get much done due to the fact that he was busy that day.
 
 1/21/19
-There was a problem with the placeMines method. Minjun figured out that there was a problem with the placeMines method. The problem with it was that the xcor and the ycor randomization was outside of the loop, making it so that the same random x and y coordinate that went in the loop. Also, the Tiles class was changed with Tile. This was because there was only one tile.
+There was a problem with the placeMines method. Minjun figured out that there was a problem with the placeMines method. The problem with it was that the xcor and the ycor randomization was outside of the loop, making it so that the same random x and y coordinate that went in the loop. Also, the Tile class was changed with Tile. This was because there was only one tile.
+
+#A couple of things that we wished we knew before the project
+:How to branch and merging. Learning that process took a lot of time. and definitely did not work out great.
+
+:How to plan the class structures nicely. I feel like our class structure was poorly designed. We ended up changing it up multiple times to get it.
+
+:Not to cram! As you can see the README comments get larger as it approaches a significant date, although we were busy, maybe we both could have worked on it slowly and maturely.
+
+Thank you for playing our game!!

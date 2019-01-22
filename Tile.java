@@ -1,5 +1,4 @@
 public class Tile {
-
   private boolean isMine, isFlagged, isRevealed;
   private int x, y, numNearbyMines;
   private String symbol;
@@ -13,6 +12,7 @@ public class Tile {
     isFlagged = false;
     //"F"
     isRevealed = false;
+    //will display a number.
     numNearbyMines = 0;
     //the symbol that is going to display what kind of tile it is
     symbol = "_";
@@ -26,6 +26,7 @@ public class Tile {
     if (isBomb && isClicked)
       result += "B";
     return result;
+    not needed
   }*/
 
   //returns numNearbyMines

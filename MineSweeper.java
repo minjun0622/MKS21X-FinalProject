@@ -19,8 +19,7 @@ public class MineSweeper {
       if (args[0].equals("hard"))
         board = new Board(10, 10, 20);
       }
-
-
+      //the third number controls the number of mines.
 
     Scanner scanner = new Scanner(System.in);
 
@@ -32,23 +31,15 @@ public class MineSweeper {
     _ _ _ _ _ _
     _ _ _ _ _ _
     depends on difficulty.
+    a sample look at how the board will look like.
     */
-
-
 
     /*
-    board.getBoard()[3][3] = new Tiles(3, 3, true);
-    board.getBoard()[1][1] = new Tiles(1, 1, true);
-
-    board.fillBoard();
-    board.calculateNearbyMines();
-    board.calculateNumMines();
-    board.calculateMinedTiles();
-    //board.getBoard()[6][6] = new Tile(6, 6, true);
-    */
-    //board.getBoard()[6][6] = new Tiles(6, 6, true);
-
-
+    board.getBoard()[3][3] = new Tile(3, 3, true);
+    board.getBoard()[1][1] = new Tile(1, 1, true);
+    This process was used to run the game because placeMines did not work.
+    This is not needed anymore.
+*/
     while (!board.exited() && !board.clickedMine() && !board.boardComplete()) {
       System.out.println();
       System.out.println();
@@ -68,21 +59,24 @@ public class MineSweeper {
       System.out.println();
       System.out.println();
       System.out.println(board);
-      System.out.println("You revealed a mine.");
+      System.out.println("Oh darn! You revealed a mine.");
+      //Losing message.
       scanner.close();
     }
     else if (board.exited()) {
       System.out.println();
       System.out.println();
       System.out.println(board);
-      System.out.println("You exited.");
+      System.out.println("You exited. Goodbye");
+      //message when you exit
       scanner.close();
     }
     else {
       System.out.println();
       System.out.println();
       System.out.println(board);
-      System.out.println("You won!");
+      System.out.println("You won! Do you want a cookie?");
+      //winning message
       scanner.close();
     }
   }
