@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Board {
-  private Tiles[][] board;
+  private Tile[][] board;
   private int row, col, numMines, numMinedTiles, revealedTiles;
   private boolean clickedMine, exited;
   private ArrayList<Tiles> minedTiles;
@@ -11,7 +11,8 @@ public class Board {
   public Board(int rowVal, int colVal, int possibility) {
     row = rowVal;
     col = colVal;
-    board = new Tiles[rowVal][colVal];
+    numMines = numOfMines;
+    board = new Tile[rowVal][colVal];
     clickedMine = false;
     exited = false;
     createBoard(possibility);
@@ -21,7 +22,8 @@ public class Board {
   public Board(int rowVal, int colVal) {
     row = rowVal;
     col = colVal;
-    board = new Tiles[rowVal][colVal];
+    numMines = 25;
+    board = new Tile[rowVal][colVal];
   }
   */
 
@@ -30,7 +32,7 @@ public class Board {
   }
 
   public void calculateMinedTiles() {
-    minedTiles = new ArrayList<Tiles>();
+    minedTiles = new ArrayList<Tile>();
     for (int r = 0; r < row; r++) {
       for (int c = 0; c < col; c++) {
         if (board[r][c].isMine())
@@ -73,6 +75,7 @@ public class Board {
 
   //selects a random position of the board and makes import junit.framework.TestCase;
   //a bomb tile. While loop makes sure that the numMines of mines are placed.
+
   public void placeMines(int possibility) {
     Random random = new Random();
     for (int r = 0; r < row; r++) {
@@ -85,19 +88,19 @@ public class Board {
   }
 
   //fills board by making the null positions of the
-  //board into regular tiles.
+  //board into regular tile.
   public void fillBoard() {
     for (int r = 0; r < row; r++) {
       for (int c = 0; c < col; c++) {
         if (board[r][c] == null) {
-          board[r][c] = new Tiles(r, c, false);
+          board[r][c] = new Tile(r, c, false);
         }
       }
     }
   }
 
   //loops through every tile on the board and if it is
-  //not a bomb tile, then it checks its 8 neighbor tiles.
+  //not a bomb tile, then it checks its 8 neighbor tile.
   public void calculateNearbyMines() {
     for (int r = 0; r < row; r++) {
       for (int c = 0; c < col; c++) {
@@ -108,9 +111,9 @@ public class Board {
   }
 
   //helper method for the calculateNearbyMines method.
-  //checks 8 neighboring tiles and the mineCount
+  //checks 8 neighboring tile and the mineCount
   //keeps track of how many mines are present in the 8
-  //neighboring tiles. It then sets the numNearbyMines
+  //neighboring tile. It then sets the numNearbyMines
   //of the tile[r][c] by the mineCount.
   public void checkNeighbors(int r, int c) {
     int mineCount = 0;
@@ -134,7 +137,7 @@ public class Board {
   }
 
   //an accessor method that returns the board.
-  public Tiles[][] getBoard() {
+  public Tile[][] getBoard() {
     return board;
   }
 
@@ -163,7 +166,7 @@ public class Board {
   }
 
   public void reveal(int r, int c) {
-    ArrayList<Tiles> nonMineNeighborTiles = checkNonMineTiles(r, c);
+    ArrayList<Tile> nonMineNeighborTile = checkNonMineTile(r, c);
     if (!board[r][c].isRevealed()) {
       board[r][c].reveal();
       revealedTiles++;
@@ -175,9 +178,9 @@ public class Board {
         checkNeighbors(r, c);
         board[r][c].setSymbol();
         if (board[r][c].getNumNearbyMines() == 0) {
-          for (int i = 0; i < nonMineNeighborTiles.size(); i++) {
-            if (!nonMineNeighborTiles.get(i).isRevealed()) {
-              reveal(nonMineNeighborTiles.get(i).getX(), nonMineNeighborTiles.get(i).getY());
+          for (int i = 0; i < nonMineNeighborTile.size(); i++) {
+            if (!nonMineNeighborTile.get(i).isRevealed()) {
+              reveal(nonMineNeighborTile.get(i).getX(), nonMineNeighborTile.get(i).getY());
             }
           }
         }
@@ -194,8 +197,8 @@ public class Board {
     return row * col - numMinedTiles - revealedTiles == 0 && flaggedAllMines();
   }
 
-  public ArrayList<Tiles> checkNonMineTiles(int r, int c) {
-    ArrayList<Tiles> result = new ArrayList<Tiles>();
+  public ArrayList<Tile> checkNonMineTile(int r, int c) {
+    ArrayList<Tile> result = new ArrayList<Tile>();
     if (r-1 >= 0 && c-1 >= 0 && !board[r-1][c-1].isMine())
       result.add(board[r-1][c-1]);
     if (r-1 >= 0 && !board[r-1][c].isMine())
@@ -236,50 +239,16 @@ public class Board {
 
     public static void main(String[] args) {
     Board test = new Board(6, 6);
-    Tiles[][] boardd = test.getBoard();
+    Tile[][] boardd = test.getBoard();
     test.fillBoard();
-    boardd[0][0] = new Tiles(0, 0, true);
-    //boardd[0][1] = new Tiles(0, 1, true);
-    //boardd[1][0] = new Tiles(1, 0, true);
-    //boardd[1][1] = new Tiles(1, 1, true);
-    //test.checkNeighbors(0, 0);
-    //System.out.println(boardd[0][0].getNumNearbyMines());
+    boardd[0][0] = new Tile(0, 0, true);
     System.out.println(test);
+
+  }
+
     //should return 3.
     //it returns 3.
 
-    */
-
-
-
-
-
-
-/*
-//makes the board.
-  public String toString(int x, int y) {
-    String result = "";
-    for (int x = 0; x < data.length; x++) {
-      for (int y = 0; y < data[x].length; y++) {
-        s += " " + data[i][x];
-        }
-        s += "|" + '\n' + "|";
-      }
-    }
-//a helper method in which we can use to create different keys on the board.
-  public int randomize(int x) {
-    Math.random();
-  }
-  public String win() {
-    if (numMines = 0) {
-      //return winning message.
-    }
-  }
-  public String lose() {
-    if (isClicked )
-    //return error message. Not sure where these methods belong.
-  }
-}
-*/
+    *
 
 }

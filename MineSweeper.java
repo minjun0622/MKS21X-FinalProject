@@ -35,15 +35,19 @@ public class MineSweeper {
     */
 
 
+
     /*
     board.getBoard()[3][3] = new Tiles(3, 3, true);
     board.getBoard()[1][1] = new Tiles(1, 1, true);
+
     board.fillBoard();
     board.calculateNearbyMines();
     board.calculateNumMines();
     board.calculateMinedTiles();
+    //board.getBoard()[6][6] = new Tile(6, 6, true);
     */
     //board.getBoard()[6][6] = new Tiles(6, 6, true);
+
 
     while (!board.exited() && !board.clickedMine() && !board.boardComplete()) {
       System.out.println();

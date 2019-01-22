@@ -1,11 +1,11 @@
-public class Tiles /*extends Board?? */ {
+public class Tile {
 
   private boolean isMine, isFlagged, isRevealed;
   private int x, y, numNearbyMines;
   private String symbol;
 
-  //constructor for Tiles
-  public Tiles(int xVal, int yVal, boolean isMined) {
+  //constructor for Tile
+  public Tile(int xVal, int yVal, boolean isMined) {
     x = xVal;
     y = yVal;
     isMine = isMined;
@@ -18,7 +18,7 @@ public class Tiles /*extends Board?? */ {
     symbol = "_";
   }
   /*
-  needs to be worked on/is toString for Tiles needed?
+  needs to be worked on/is toString for Tile needed?
   public String toString() {
     String result = "";
     if (isFlag)
