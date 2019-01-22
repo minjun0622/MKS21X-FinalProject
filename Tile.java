@@ -95,12 +95,8 @@ however, if it was flagged, then a F will take over and you wil know that a mine
     }
   }
 
-  /*
-  //different actions depending on whether the tile is
-  //already flagged, not flagged, revealed, etc.
-  //needs more work probably.
-  */
-
+  //changes isFlagged boolean to its
+  //opposite.
   public void setFlag() {
     isFlagged = !isFlagged;
   }

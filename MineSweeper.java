@@ -12,14 +12,19 @@ public class MineSweeper {
     else {
       if (args[0].equals("easy"))
         board = new Board(6, 6, 10);
+        //6 by 6 board and each tile has
+        //10% chance of being a mine.
 
       if (args[0].equals("medium"))
         board = new Board(8, 8, 15);
+        //8 by 8 board and each tile has
+        //15% chance of being a mine.
 
       if (args[0].equals("hard"))
         board = new Board(10, 10, 20);
+        //10 by 10 board and each tile has
+        //20% chance of being a mine.
       }
-      //the third number controls the number of mines.
 
     Scanner scanner = new Scanner(System.in);
 

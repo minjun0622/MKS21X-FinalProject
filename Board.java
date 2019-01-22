@@ -68,8 +68,8 @@ public class Board {
     numMinedTile = result;
   }
 
-  //selects a random position of the board and makes import junit.framework.TestCase;
-  //a bomb tile. While loop makes sure that the numMines of mines are placed.
+  //loops through the board and makes a Tile into a mined Tile.
+  //Each tile has a chance of possibility% of being a mine.
   public void placeMines(int possibility) {
     Random random = new Random();
     for (int r = 0; r < row; r++) {
@@ -135,7 +135,7 @@ public class Board {
     return board;
   }
 
-  //returns true if it is clicked.
+  //returns true if a user reveals a mine tile.
   public boolean clickedMine() {
     return clickedMine;
   }
@@ -155,7 +155,7 @@ public class Board {
   4 _ _ _ _ _ _
   5 _ _ _ _ _ _
   */
-  
+
   public String toString() {
     String result = "    ";
     for (int i = 0; i < row; i++) {
@@ -172,7 +172,9 @@ public class Board {
     return result;
   }
 
-  //It checks if it is a mine
+  //reveals a Tile.
+  //if a revealed tile is not a mine, then it makes its neighbor
+  //non-mined tiles to reveal as well, causing a chain reaction.
   public void reveal(int r, int c) {
     ArrayList<Tile> nonMineNeighborTile = checkNonMineTile(r, c);
     if (!board[r][c].isRevealed()) {

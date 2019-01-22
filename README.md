@@ -52,7 +52,8 @@ Chong worked on the board class by adding variables that keeps track of how many
 1/21/19
 There was a problem with the placeMines method. Minjun figured out that there was a problem with the placeMines method. The problem with it was that the xcor and the ycor randomization was outside of the loop, making it so that the same random x and y coordinate that went in the loop. Also, the Tile class was changed with Tile. This was because there was only one tile.
 
-#A couple of things that we wished we knew before the project
+# A couple of things that we wished we knew before the project
+
 :How to branch and merging. Learning that process took a lot of time. and definitely did not work out great.
 
 :How to plan the class structures nicely. I feel like our class structure was poorly designed. We ended up changing it up multiple times to get it.
