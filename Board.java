@@ -20,7 +20,7 @@ public class Board {
   public Board(int rowVal, int colVal) {
     row = rowVal;
     col = colVal;
-    numMines = 2;
+    numMines = 25;
     board = new Tile[rowVal][colVal];
   }
 
