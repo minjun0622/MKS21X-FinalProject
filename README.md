@@ -1,6 +1,9 @@
 
 # MKS21X-FinalProject
 Fall APCS 2018 final project MineSweeper by Chong Lee and Minjun Seo pd 3.
+Branches:
+monkey = Minjun
+yur = Chong
 
 # Instructions
 
@@ -51,3 +54,4 @@ Chong worked on the board class by adding variables that keeps track of how many
 
 1/21/19
 There was a problem with the placeMines method. Minjun figured out that there was a problem with the placeMines method. The problem with it was that the xcor and the ycor randomization was outside of the loop, making it so that the same random x and y coordinate that went in the loop. Also, the Tiles class was changed with Tile. This was because there was only one tile.
+Chong added a way to solve the placeMines method in a different way than I did. However, one thing he implemented was the fact that in different difficulties, he edited the bomb density and compared them. Since that function was added, his way will be implemented in the masters branch. However, Minjun's version can be found in the monkey branch.
