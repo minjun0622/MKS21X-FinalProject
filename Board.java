@@ -17,11 +17,13 @@ public class Board {
     createBoard(possibility);
   }
 
+  /*
   public Board(int rowVal, int colVal) {
     row = rowVal;
     col = colVal;
     board = new Tiles[rowVal][colVal];
   }
+  */
 
   public Board() {
     board = null;
@@ -225,9 +227,12 @@ public class Board {
       flag(rowValue, colValue);
     }
 
+
+    /*
     //this is a main method made to check if
     //the checkNeighbors() method work or not.
     //It works properly.
+
 
     public static void main(String[] args) {
     Board test = new Board(6, 6);
@@ -242,7 +247,8 @@ public class Board {
     System.out.println(test);
     //should return 3.
     //it returns 3.
-  }
+
+    */
 
 
 
